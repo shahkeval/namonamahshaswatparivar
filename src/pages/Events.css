@@ -139,3 +139,6 @@
       font-size: 0.9rem;
     }
   }
+  .d-none{
+    display: none;
+  }

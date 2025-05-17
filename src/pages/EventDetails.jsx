@@ -7,6 +7,7 @@ import LocationPinIcon from '@mui/icons-material/LocationPin';
 import PeopleIcon from '@mui/icons-material/People';
 import { QRCodeSVG } from 'qrcode.react';
 import Footer from '../components/Footer';
+import emailjs from "emailjs-com"; // Import EmailJS
 
 const EventDetails = () => {
   const { id } = useParams();
@@ -14,8 +15,9 @@ const EventDetails = () => {
   
   // Separate state for donation form
   const [donationFormData, setDonationFormData] = useState({
-    fullName: '',
+    name: '',
     email: '',
+    category:event.title,
     phone: '',
     message: '',
     amount: '',
@@ -80,14 +82,22 @@ const EventDetails = () => {
   const handleDonationSubmit = (e) => {
     e.preventDefault();
     setIsSubmittingDonation(true);
+    emailjs
+    .sendForm(
+      "service_264rxjp",
+      "template_7oremm9",
+      e.target, // Sends form data to the template
+      "7vYFlUx2o5N3Cv3Ll"
+    )
 
     const qrString = `upi://pay?pa=example@bank&pn=${donationFormData.fullName}&am=${donationFormData.amount}&cu=INR&tn=${donationFormData.message}`;
     setQrData(qrString);
     setTimer(10); // Reset timer on new submission
     setIsSubmittingDonation(false);
     setDonationFormData({
-      fullName: '',
+      name: '',
       email: '',
+      category:event.title,
       phone: '',
       message: '',
       amount: '',
@@ -97,7 +107,13 @@ const EventDetails = () => {
   const handleRegistrationSubmit = (e) => {
     e.preventDefault();
     setIsSubmittingRegistration(true);
-    
+    emailjs
+    .sendForm(
+      "service_k2tcpcx",
+      "template_u2l34q6",
+      e.target, // Sends form data to the template
+      "Mc-t84_MrpngejBH_"
+    )
     // Handle registration logic here
     // Reset registration form data after submission
     setRegistrationFormData({
@@ -226,17 +242,17 @@ const EventDetails = () => {
               <form onSubmit={handleDonationSubmit}>
                 <input
                   type="text"
-                  name="fullName"
+                  name="name"
                   placeholder="Full Name"
-                  value={donationFormData.fullName}
-                  onChange={handleDonationChange}
+                  value={donationFormData.name}
+                 // onChange={handleDonationChange}
                   required
                 />
                 <input
                   type="text"
-                  name="eventName"
-                  value={event.title}
-                  disabled
+                  name="category"
+                  value={donationFormData.category}
+                  
                 />
                 <input
                   type="tel"
@@ -291,6 +307,16 @@ const EventDetails = () => {
                 ) : (
                   <form onSubmit={handleRegistrationSubmit}>
                     <div className="form-group">
+                    <input
+                        type="text"
+                        id="pagename"
+                        name="pagename"
+                        placeholder="Enter your full name"
+                        className='d-none'
+                        value={event.title}
+                        onChange={handleRegistrationChange}
+                        required
+                      />
                       <label htmlFor="fullName">Full Name*</label>
                       <input
                         type="text"
