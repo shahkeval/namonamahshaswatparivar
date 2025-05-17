@@ -1,0 +1,66 @@
+[
+  {
+    "id": "giriseva",
+    "title": "Giri seva - 2025",
+    "description": "Join us for an enlightening seminar on Jain values and lifestyle.\\nExplore the principles of non-violence and truth.\\nAll are welcome!",
+    "image": "/images/palitana.png",
+    "images": [
+      "/images/group1.jpg",
+      "/images/group2.jpg",
+      "/images/group3.jpg"
+    ],
+    "date": "2025-06-13,14,15",
+    "time": "10:00 AM - 4:00 PM",
+    "location": "Palitan",
+    "organizer": "Shri Anadji Kalyangi Pethi / Namo Namah Shaswat Parivar",
+    "type": "upcoming",
+    "schedule": [
+      {
+        "time": "05:45 AM",
+        "activity": "Yatra Start"
+      },
+      {
+        "time": "11:00 AM",
+        "activity": "Keynote Speech by Acharya Ji"
+      },
+      {
+        "time": "1:00 PM",
+        "activity": "Lunch Break"
+      },
+      {
+        "time": "2:00 PM",
+        "activity": "Interactive Q&A"
+      }
+    ]
+  },
+  {
+    "id": "event-002",
+    "title": "Annual Paryushan Mahaparva",
+    "description": "Celebrate the most auspicious Jain festival with devotion.\\nDaily pravachans, bhakti, and samayik sessions.\\nDon't miss the chance for spiritual upliftment.",
+    "image": "/images/paryushan.png",
+    "images": [
+      "https://example.com/images/jain-event-2a.jpg",
+      "https://example.com/images/jain-event-2b.jpg",
+      "https://example.com/images/jain-event-2c.jpg"
+    ],
+    "date": "2024-09-03",
+    "time": "7:00 AM - 9:00 PM",
+    "location": "Jain Derasar, Ahmedabad",
+    "organizer": "LJ Jain Trust",
+    "type": "past",
+    "schedule": [
+      {
+        "time": "7:00 AM",
+        "activity": "Prabhavna Yatra"
+      },
+      {
+        "time": "10:00 AM",
+        "activity": "Pooja & Pravachan"
+      },
+      {
+        "time": "5:00 PM",
+        "activity": "Samayik & Bhakti"
+      }
+    ]
+  }
+]

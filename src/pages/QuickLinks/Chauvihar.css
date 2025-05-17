@@ -1,0 +1,10 @@
+.video-container {
+    display: flex;
+    justify-content: center; /* Center the video */
+    margin: 20px 0; /* Add some margin */
+}
+
+.video-container iframe {
+    max-width:90%; /* Make the video responsive */
+    height: 500px; /* Maintain aspect ratio */
+}
