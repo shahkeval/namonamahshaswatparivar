@@ -9,9 +9,9 @@ const Gallery = () => {
       id: 'jatra',
       name: '7 Jatra',
       images: [
-        { src: '/images/jatra/yatra1.jpg', alt: 'Jatra Image 1' },
-        { src: '/images/jatra/yatra2.jpg', alt: 'Jatra Image 2' },
-        { src: '/images/jatra/yatra3.jpg', alt: 'Jatra Image 3' },
+        { src: '/images/jatra/yatra1.JPG', alt: 'Jatra Image 1' },
+        { src: '/images/jatra/yatra2.JPG', alt: 'Jatra Image 2' },
+        { src: '/images/jatra/yatra3.JPG', alt: 'Jatra Image 3' },
         { src: '/images/jatra/yatra4.jpg', alt: 'Jatra Image 4' },
         { src: '/images/jatra/yatra5.jpg', alt: 'Jatra Image 5' },
         { src: '/images/jatra/yatra6.jpg', alt: 'Jatra Image 6' },
