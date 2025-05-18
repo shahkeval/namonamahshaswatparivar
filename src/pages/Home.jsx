@@ -33,23 +33,23 @@ const Home = () => {
         <h1>નમો નમઃ શાશ્વત પરિવાર</h1>
         <h3> યૌવન એટલે શું? વીજળીનો તણખો, <br />
           જો ઝબકે તો અજવાળુ, નહિંતર ભડકો.. <br /></h3>
-        <p>
+        <p style={{textAlign:"justify"}}>
          
           સ્વાર્થી દુનિયાની વચ્ચે રહી નિ:સ્વાર્થતાના મીઠડા ઘુંટ પીવા અને પીવડાવવા માટે દુર્લભ મનુષ્યભવને પ્રત્યેક ક્ષણે ચિરંજીવ બનાવી દેવા માટે પરમાત્મા મહાવીર સ્વામી કથિત શાશ્વત સુખનું લક્ષ અને આત્માના પક્ષને નજર સમક્ષ રાખી ક્ષણે ક્ષણને જીવંત બનાવવા માટે જેઓ સતત પ્રયત્નશીલ છે, જેઓ હંમેશા શાસનને સમર્પિત છે, એવા સત્ત્વશાળી યુવાનોની મજબુત સાંકળ એટલે<b> નમો નમઃ શાશ્વત પરિવાર.</b>
         </p>
       </div>
       <div className="quick-links">
-        <h2>Quick Links</h2>
+        <h2>Our Activities</h2>
         <ul>
-          <li><Link to="/quicklinks/chauvihar">Chauvihar Chhath kari Giriraj 7 Yatra</Link></li>
-          <li><Link to="/quicklinks/shetrunjay">Shetrunjay Nadi Nahi Ne Anusthan</Link></li>
-          <li><Link to="/quicklinks/giriraj">Giriraj Nav-tunk Pratimaji Ashtprakari Puja</Link></li>
-          <li><Link to="/quicklinks/palkhi">Palkhi Yatra</Link></li>
-          <li><Link to="/quicklinks/guru">Guru Bhagwant Vaiyavach</Link></li>
-          <li><Link to="/quicklinks/shasan">Shasan Prabhavna</Link></li>
-          <li><Link to="/quicklinks/sadharmik">Sadharmik Bhakti</Link></li>
-          <li><Link to="/quicklinks/anukampa">Anukampa</Link></li>
-          <li><Link to="/quicklinks/jivdaya">Jivdaya</Link></li>
+          <li>Chauvihar Chhath kari Giriraj 7 Yatra</li>
+          <li>Shetrunjay Nadi Nahi Ne Anusthan</li>
+          <li>Giriraj Nav-tunk Pratimaji Ashtprakari Puja</li>
+          <li>Palkhi Yatra</li>
+          <li>Guru Bhagwant Vaiyavach</li>
+          <li>Shasan Prabhavna</li>
+          <li>Sadharmik Bhakti</li>
+          <li>Anukampa</li>
+          <li><Link to="/quicklinks/VoteComponent">VoteComponent</Link></li>
           <li>& more</li>
         </ul>
       </div>

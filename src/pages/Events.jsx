@@ -36,7 +36,7 @@ const Events = () => {
           className={`tab-button ${activeType === 'past' ? 'active' : ''}`}
           onClick={() => handleTypeChange('past')}
         >
-          Past Events
+          Events
         </button>
       </div>
 
@@ -48,7 +48,7 @@ const Events = () => {
         ) : (
           <div className="no-events">
             <h3>No events found</h3>
-            <p>There are currently no {activeType} events scheduled. Please check back later.</p>
+            <p>There are currently no events scheduled. Please check back after some time.🙏</p>
           </div>
         )}
       </div>

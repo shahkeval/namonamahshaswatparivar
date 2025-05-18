@@ -66,7 +66,7 @@ const Donation = () => {
     }
     setError('');
     setSubmitted(true);
-    const qrString = `upi://pay?pa=shahkeval7383@oksbi&pn=${formData.name}&am=${formData.amount}&cu=INR&tn=${formData.message}`;
+    const qrString = `upi://pay?pa=namonamahshashwatcha.62486048@hdfcbank&pn=${formData.name}&am=${formData.amount}&cu=INR&tn=${formData.message}`;
     setQrData(qrString);
     setTimer(300); // 5 minutes
   };

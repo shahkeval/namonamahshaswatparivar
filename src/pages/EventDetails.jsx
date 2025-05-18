@@ -40,6 +40,12 @@ const EventDetails = () => {
   const [error, setError] = useState('');
   const [showThankYouMessage, setShowThankYouMessage] = useState(false);
 
+  const formatTime = (timeInSeconds) => {
+    const minutes = Math.floor(timeInSeconds / 60);
+    const seconds = timeInSeconds % 60;
+    return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`; // Format as MM:SS
+  };
+
   useEffect(() => {
     if (timer > 0 && qrData) {
       const interval = setInterval(() => {
@@ -90,9 +96,9 @@ const EventDetails = () => {
       "7vYFlUx2o5N3Cv3Ll"
     )
 
-    const qrString = `upi://pay?pa=example@bank&pn=${donationFormData.fullName}&am=${donationFormData.amount}&cu=INR&tn=${donationFormData.message}`;
+    const qrString = `upi://pay?pa=namonamahshashwatcha.62486048@hdfcbank&pn=${donationFormData.fullName}&am=${donationFormData.amount}&cu=INR&tn=${donationFormData.message}`;
     setQrData(qrString);
-    setTimer(10); // Reset timer on new submission
+    setTimer(300); // Reset timer on new submission
     setIsSubmittingDonation(false);
     setDonationFormData({
       name: '',
@@ -216,22 +222,8 @@ const EventDetails = () => {
               </div>
             )}
           </div>
-
-          {event.images && event.images.length > 0 && (
-            <div className="event-gallery">
-              <h3>Event Gallery</h3>
-              <div className="gallery-grid">
-                {event.images.map((img, index) => (
-                  <div key={index} className="gallery-item">
-                    <img src={img} alt={`${event.title} - image ${index + 1}`} className="fit-image" />
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* Donation Button */}
-          <button className="donation-button" onClick={toggleDonationForm}>
+  {/* Donation Button */}
+  <button className="donation-button" onClick={toggleDonationForm}>
             Donation
           </button>
 
@@ -245,7 +237,7 @@ const EventDetails = () => {
                   name="name"
                   placeholder="Full Name"
                   value={donationFormData.name}
-                 // onChange={handleDonationChange}
+                 onChange={handleDonationChange}
                   required
                 />
                 <input
@@ -285,12 +277,26 @@ const EventDetails = () => {
                 <div className="qr-section">
                   <p>Scan the QR code below to complete your donation:</p>
                   <QRCodeSVG value={qrData} size={256} />
-                  <p>QR Code expires in: {timer} seconds</p>
+                  <p>QR Code expires in: {formatTime(timer)}</p>
                   <button className="back-button" onClick={handleBack}>Back</button>
                 </div>
               )}
             </div>
           )}
+          {event.images && event.images.length > 0 && (
+            <div className="event-gallery">
+              <h3>Event Gallery</h3>
+              <div className="gallery-grid">
+                {event.images.map((img, index) => (
+                  <div key={index} className="gallery-item">
+                    <img src={img} alt={`${event.title} - image ${index + 1}`} className="fit-image" />
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+        
         </div>
 
         <div className="registration-container">
@@ -416,23 +422,27 @@ const EventDetails = () => {
       </div>
 
       <div className="related-events">
-        <h2>Similar Events</h2>
-        <div className="related-events-grid">
-          {events
-            .filter(e => e.id !== event.id && e.type === event.type)
-            .slice(0, 3)
-            .map(relatedEvent => (
-              <div key={relatedEvent.id} className="related-event-card">
-                <Link to={`/events/${relatedEvent.id}`}>
-                  <img src={relatedEvent.image} alt={relatedEvent.title} className="fit-image" />
-                  <div className="related-event-info">
-                    <h4>{relatedEvent.title}</h4>
-                    <p>{relatedEvent.date}</p>
+        {events.filter(e => e.id !== event.id && e.type === event.type).length > 0 && (
+          <>
+            <h2>Similar Events</h2>
+            <div className="related-events-grid">
+              {events
+                .filter(e => e.id !== event.id && e.type === event.type)
+                .slice(0, 3)
+                .map(relatedEvent => (
+                  <div key={relatedEvent.id} className="related-event-card">
+                    <Link to={`/events/${relatedEvent.id}`}>
+                      <img src={relatedEvent.image} alt={relatedEvent.title} className="fit-image" />
+                      <div className="related-event-info">
+                        <h4>{relatedEvent.title}</h4>
+                        <p>{relatedEvent.date}</p>
+                      </div>
+                    </Link>
                   </div>
-                </Link>
-              </div>
-            ))}
-        </div>
+                ))}
+            </div>
+          </>
+        )}
       </div>
     </div>
     <Footer/>

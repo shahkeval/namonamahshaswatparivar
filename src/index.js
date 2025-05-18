@@ -19,7 +19,7 @@ import Guru from './pages/QuickLinks/Guru';
 import Shasan from './pages/QuickLinks/Shasan';
 import Sadharmik from './pages/QuickLinks/Sadharmik';
 import Anukampa from './pages/QuickLinks/Anukampa';
-import Jivdaya from './pages/QuickLinks/Jivdaya';
+import VoteComponent from './pages/QuickLinks/VoteComponent';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -43,7 +43,7 @@ root.render(
           <Route path="quicklinks/shasan" element={<Shasan />} />
           <Route path="quicklinks/sadharmik" element={<Sadharmik />} />
           <Route path="quicklinks/anukampa" element={<Anukampa />} />
-          <Route path="quicklinks/jivdaya" element={<Jivdaya />} />
+          <Route path="quicklinks/VoteComponent" element={<VoteComponent />} />
         </Route>
       </Routes>
     </Router>

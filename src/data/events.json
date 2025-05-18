@@ -11,7 +11,7 @@
     ],
     "date": "2025-06-13,14,15",
     "time": "10:00 AM - 4:00 PM",
-    "location": "Palitan",
+    "location": "Palitana",
     "organizer": "Shri Anadji Kalyangi Pethi / Namo Namah Shaswat Parivar",
     "type": "upcoming",
     "schedule": [
@@ -30,36 +30,6 @@
       {
         "time": "2:00 PM",
         "activity": "Interactive Q&A"
-      }
-    ]
-  },
-  {
-    "id": "event-002",
-    "title": "Annual Paryushan Mahaparva",
-    "description": "Celebrate the most auspicious Jain festival with devotion.\\nDaily pravachans, bhakti, and samayik sessions.\\nDon't miss the chance for spiritual upliftment.",
-    "image": "/images/paryushan.png",
-    "images": [
-      "https://example.com/images/jain-event-2a.jpg",
-      "https://example.com/images/jain-event-2b.jpg",
-      "https://example.com/images/jain-event-2c.jpg"
-    ],
-    "date": "2024-09-03",
-    "time": "7:00 AM - 9:00 PM",
-    "location": "Jain Derasar, Ahmedabad",
-    "organizer": "LJ Jain Trust",
-    "type": "past",
-    "schedule": [
-      {
-        "time": "7:00 AM",
-        "activity": "Prabhavna Yatra"
-      },
-      {
-        "time": "10:00 AM",
-        "activity": "Pooja & Pravachan"
-      },
-      {
-        "time": "5:00 PM",
-        "activity": "Samayik & Bhakti"
       }
     ]
   }

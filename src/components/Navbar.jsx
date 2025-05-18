@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 import logo from '../assets/logo.png'; // Make sure this path is correct
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const menuRef = useRef(null); // Create a ref for the menu
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -13,6 +14,20 @@ const Navbar = () => {
   const closeMenu = () => {
     setMenuOpen(false);
   };
+
+  // Close the menu when clicking outside of it
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuOpen && menuRef.current && !menuRef.current.contains(event.target)) {
+        closeMenu();
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [menuOpen]);
 
   return (
     <nav className="navbar">
@@ -27,7 +42,7 @@ const Navbar = () => {
         <div></div>
       </div>
 
-      <ul className={`navbar-links ${menuOpen ? 'open' : ''}`}>
+      <ul className={`navbar-links ${menuOpen ? 'open' : ''}`} ref={menuRef}>
         <li><Link to="/" onClick={closeMenu}>Home</Link></li>
         <li><Link to="/about" onClick={closeMenu}>About</Link></li>
         <li><Link to="/events" onClick={closeMenu}>Events</Link></li>
