@@ -407,15 +407,7 @@ const EventDetails = () => {
             )}
 
             {event.type === 'upcoming' && (
-              <div className="event-highlights">
-                <h3>Event Highlights</h3>
-                <ul>
-                  <li>Interactive sessions with experts</li>
-                  <li>Networking opportunities</li>
-                  <li>Refreshments and snacks provided</li>
-                  <li>Certificate of participation</li>
-                </ul>
-              </div>
+              <div></div>
             )}
           </div>
         </div>

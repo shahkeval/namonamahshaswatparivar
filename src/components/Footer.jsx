@@ -24,10 +24,10 @@ const Footer = () => {
           <div className="footer-contact">
           
             <div className="social-icons">
-              <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer"><InstagramIcon/></a>
-              <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer"><FacebookIcon/></a>
-              <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer"><YouTubeIcon/></a>
-              <a href="https://chat.whatsapp.com" target="_blank" rel="noopener noreferrer"><WhatsAppIcon/></a>
+              <a href="https://www.instagram.com/namonamahshaswatparivar/profilecard/?igsh=MTVpemN5bjViZzNqZw==" target="_blank" rel="noopener noreferrer"><InstagramIcon/></a>
+              <a href="https://www.facebook.com/namonamhshaswatparivar?mibextid=ZbWKwL" target="_blank" rel="noopener noreferrer"><FacebookIcon/></a>
+              <a href="http://www.youtube.com/@namonamahShaswatparivar" target="_blank" rel="noopener noreferrer"><YouTubeIcon/></a>
+              <a href="https://chat.whatsapp.com/DdNY8vdh03K0cPouuBZupT" target="_blank" rel="noopener noreferrer"><WhatsAppIcon/></a>
             </div>
             <div className="footer-links">
           <ul>

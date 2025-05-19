@@ -13,24 +13,6 @@
     "time": "10:00 AM - 4:00 PM",
     "location": "Palitana",
     "organizer": "Shri Anadji Kalyangi Pethi / Namo Namah Shaswat Parivar",
-    "type": "upcoming",
-    "schedule": [
-      {
-        "time": "05:45 AM",
-        "activity": "Yatra Start"
-      },
-      {
-        "time": "11:00 AM",
-        "activity": "Keynote Speech by Acharya Ji"
-      },
-      {
-        "time": "1:00 PM",
-        "activity": "Lunch Break"
-      },
-      {
-        "time": "2:00 PM",
-        "activity": "Interactive Q&A"
-      }
-    ]
+    "type": "upcoming"
   }
 ]
