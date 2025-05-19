@@ -88,9 +88,12 @@ const Donation = () => {
           <input type="text" name="name" placeholder="Name" value={formData.name} onChange={handleChange} required />
           <select name="category" value={formData.category} onChange={handleChange} required>
             <option value="">Select Category</option>
-            <option value="Temple Fund">Temple Fund</option>
-            <option value="Education Fund">Education Fund</option>
-            <option value="Medical Aid">Medical Aid</option>
+            <option value="દેવદ્રવ્ય ખાતે">દેવદ્રવ્ય ખાતે</option>
+            <option value="સાધુ-સાધ્વી વૈયાવચ્ચ ફંડ ખાતે">સાધુ-સાધ્વી વૈયાવચ્ચ ફંડ ખાતે</option>
+            <option value="સાધર્મિક ખાતે">સાધર્મિક ખાતે</option>
+            <option value="સાધારણ ફંડ ખાતે">સાધારણ ફંડ ખાતે</option>
+            <option value="જીવદયા ખાતે">જીવદયા ખાતે</option>
+            <option value="અનુકંપા ખાતે">અનુકંપા ખાતે</option>
           </select>
           <input type="tel" name="phone" placeholder="Phone Number" value={formData.phone} onChange={handleChange} required />
           <input type="text" name="address" placeholder="Address" value={formData.address} onChange={handleChange} required />

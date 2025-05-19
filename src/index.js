@@ -35,6 +35,7 @@ root.render(
           <Route path="donation" element={<Donation />} />
           <Route path="gallery" element={<Gallery />} />
           <Route path="contact" element={<Contact />} />
+          <Route path="voting" element={<VoteComponent />} />
           <Route path="quicklinks/chauvihar" element={<Chauvihar />} />
           <Route path="quicklinks/shetrunjay" element={<Shetrunjay />} />
           <Route path="quicklinks/giriraj" element={<Giriraj />} />

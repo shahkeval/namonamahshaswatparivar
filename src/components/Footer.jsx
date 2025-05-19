@@ -31,10 +31,7 @@ const Footer = () => {
             </div>
             <div className="footer-links">
           <ul>
-            <li><a href="/about">About Us</a></li>
-            <li><a href="/contact">Contact</a></li>
-            <li><a href="/privacy">Privacy Policy</a></li>
-            <li><a href="/terms">Terms of Service</a></li>
+            
           </ul>
           <p>Address: 5, Sharda Mandir Rd,nr. Sugam Residency Gardenia,<br></br> Sukhipura, Vasantkunj Society, and, Paldi,<br></br> Ahmedabad, Gujarat 380007</p>
           <div className='pfornumber'>

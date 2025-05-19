@@ -62,3 +62,12 @@
   font-weight: bold;
   margin-top: 1rem;
 }
+
+.logo-container {
+  margin-bottom: 1rem; /* Space below the logo */
+}
+
+.logo {
+  max-width: 30%; /* Responsive logo */
+  height: auto; /* Maintain aspect ratio */
+}

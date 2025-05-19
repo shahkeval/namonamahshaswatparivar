@@ -34,7 +34,7 @@ const EventCard = ({ event }) => {
             </div>
           )}
         </div>
-        <p className="event-description-text" style={{textAlign:'left'}}>
+        <p className="event-description-text" style={{textAlign:'justify'}}>
               {event.description.split('\\n').map((line, idx) => (
                 <React.Fragment key={idx}>
                   {line}

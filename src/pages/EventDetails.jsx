@@ -172,7 +172,7 @@ const EventDetails = () => {
               <DateRangeIcon />
               <div>
                 <h4>Date & Time</h4>
-                <p>{event.date}</p>
+                <p style={{textAlign:'start'}}>{event.date}</p>
                 {event.time && <p>{event.time}</p>}
               </div>
             </div>

@@ -49,6 +49,7 @@ const Navbar = () => {
         <li><Link to="/donation" onClick={closeMenu}>Donation</Link></li>
         <li><Link to="/gallery" onClick={closeMenu}>Gallery</Link></li>
         <li><Link to="/contact" onClick={closeMenu}>Contact</Link></li>
+        <li style={{color:'red'}}><Link to="/voting" onClick={closeMenu}>Voting</Link></li>
       </ul>
     </nav>
   );

@@ -9,9 +9,9 @@ collection,
 } from "firebase/firestore";
 import { db } from "../../firebase"; // Make sure this path points to your firebase.js config
 import './VoteComponent.css'; // Import the CSS file
-
+import RSSM from '../../assets/RSSM.png'
 const VoteComponent = () => {
-const [votes, setVotes] = useState({ optionA: 0, optionB: 0 });
+const [votes, setVotes] = useState({ optionA: 0, optionB: 0 ,optionC: 0 ,ritika_pathsala:0});
 const [voted, setVoted] = useState(false);
 
 // Generate or retrieve a device ID
@@ -32,7 +32,7 @@ const voteSnap = await getDoc(voteDocRef);
 if (voteSnap.exists()) {
   setVotes(voteSnap.data());
 } else {
-  await setDoc(voteDocRef, { optionA: 0, optionB: 0 });
+  await setDoc(voteDocRef, { optionA: 0, optionB: 0 ,optionC : 0, ritika_pathsala:0});
 }
 
 const deviceId = getDeviceId();
@@ -71,7 +71,11 @@ setVoted(true);
 
 return (
 <div className="vote-container">
+<div className="logo-container">
+  <img src={RSSM} alt="Logo" className="logo" />
+</div>
 <h2 className="vote-heading">What do you like?</h2>
+
 {!voted ? (
   <>
     <button
@@ -88,17 +92,34 @@ return (
     >
       Pathsala B
     </button>
+    <button
+      className="vote-button optionC"
+      onClick={() => handleVote("optionC")}
+      disabled={voted}
+    >
+      Pathsala C
+    </button>
+    <button
+      className="vote-button ritika_pathsala"
+      onClick={() => handleVote("ritika_pathsala")}
+      disabled={voted}
+    >
+      Ritika arav Pathsala
+    </button>
   </>
 ) : (
-  <p className="thank-you-message">You have already voted!</p>
+  <p className="thank-you-message"></p>
 )}
 <div className="vote-count">
-<p>Option A: {votes.optionA}</p>
-<p>Option B: {votes.optionB}</p>
+<p>Pathsala A: {votes.optionA}</p>
+<p>Pathsala B: {votes.optionB}</p>
+<p>Pathsala C: {votes.optionC}</p>
+<p>ritika arav Pahasala: {votes.ritika_pathsala}</p>
 {voted && (
-<p className="thank-you-message">Thanks for voting!</p>
+<p className="thank-you-message">Thanks for voting!<br></br> Your Vote matters a lot ...!</p>
 )}
 </div>
+
 </div>
 );
 };

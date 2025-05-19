@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'; // Import Link
 import './Home.css'; // Create a new CSS file for styling
 import Footer from '../components/Footer'; // Import the Footer component
 import Breadcrumb from '../components/Breadcrumb';
+import Popup from '../components/Popup'; // Import the Popup component
 
 const images = [
   '/images/bapji.jpg',
@@ -13,6 +14,7 @@ const images = [
 
 const Home = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [showPopup, setShowPopup] = useState(false); // State to control popup visibility
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -22,42 +24,57 @@ const Home = () => {
     return () => clearInterval(interval); // Cleanup on unmount
   }, []);
 
+  useEffect(() => {
+    // Check localStorage to see if the popup has been shown
+    const hasSeenPopup = localStorage.getItem('hasSeenPopup');
+    if (!hasSeenPopup) {
+      setShowPopup(true); // Show the popup if not seen
+      localStorage.setItem('hasSeenPopup', 'true'); // Set the key in localStorage
+    }
+  }, []);
+
+  const handleVoteNow = () => {
+    setShowPopup(false); // Close the popup
+  };
+
+  const handleClosePopup = () => {
+    setShowPopup(false); // Close the popup
+  };
+
   return (
     <>
-    <div className="home-container">
-      
-      <div className="image-section">
-        <img src={images[currentImageIndex]} alt="Description" />
+      {showPopup && <Popup onClose={handleClosePopup} onVote={handleVoteNow} />}
+      <div className="home-container">
+        <div className="image-section">
+          <img src={images[currentImageIndex]} alt="Description" />
+        </div>
+        <div className="text-section">
+          <h1>નમો નમઃ શાશ્વત પરિવાર</h1>
+          <h3> યૌવન એટલે શું? વીજળીનો તણખો, <br />
+            જો ઝબકે તો અજવાળુ, નહિંતર ભડકો.. <br /></h3>
+          <p style={{ textAlign: "justify" }}>
+            સ્વાર્થી દુનિયાની વચ્ચે રહી નિ:સ્વાર્થતાના મીઠડા ઘુંટ પીવા અને પીવડાવવા માટે દુર્લભ મનુષ્યભવને પ્રત્યેક ક્ષણે ચિરંજીવ બનાવી દેવા માટે પરમાત્મા મહાવીર સ્વામી કથિત શાશ્વત સુખનું લક્ષ અને આત્માના પક્ષને નજર સમક્ષ રાખી ક્ષણે ક્ષણને જીવંત બનાવવા માટે જેઓ સતત પ્રયત્નશીલ છે, જેઓ હંમેશા શાસનને સમર્પિત છે, એવા સત્ત્વશાળી યુવાનોની મજબુત સાંકળ એટલે<b> નમો નમઃ શાશ્વત પરિવાર.</b>
+          </p>
+        </div>
+        <div className="quick-links">
+          <h2>Our Activities</h2>
+          <ul>
+            <li>Chauvihar Chhath kari Giriraj Ni 7 Yatra</li>
+            <li>Shetrunjay Nadi Nahi Ne Anusthan</li>
+            <li>Giriraj Nav-tunk Pratimaji Ashtprakari Puja</li>
+            <li>Palkhi Yatra</li>
+            <li>Guru Bhagwant Vaiyavach</li>
+            <li>Shasan Prabhavna</li>
+            <li>Sadharmik Bhakti</li>
+            <li>Anukampa</li>
+            <li>Jivdaya </li>
+            <li>& more</li>
+          </ul>
+        </div>
       </div>
-      <div className="text-section">
-        <h1>નમો નમઃ શાશ્વત પરિવાર</h1>
-        <h3> યૌવન એટલે શું? વીજળીનો તણખો, <br />
-          જો ઝબકે તો અજવાળુ, નહિંતર ભડકો.. <br /></h3>
-        <p style={{textAlign:"justify"}}>
-         
-          સ્વાર્થી દુનિયાની વચ્ચે રહી નિ:સ્વાર્થતાના મીઠડા ઘુંટ પીવા અને પીવડાવવા માટે દુર્લભ મનુષ્યભવને પ્રત્યેક ક્ષણે ચિરંજીવ બનાવી દેવા માટે પરમાત્મા મહાવીર સ્વામી કથિત શાશ્વત સુખનું લક્ષ અને આત્માના પક્ષને નજર સમક્ષ રાખી ક્ષણે ક્ષણને જીવંત બનાવવા માટે જેઓ સતત પ્રયત્નશીલ છે, જેઓ હંમેશા શાસનને સમર્પિત છે, એવા સત્ત્વશાળી યુવાનોની મજબુત સાંકળ એટલે<b> નમો નમઃ શાશ્વત પરિવાર.</b>
-        </p>
+      <div>
+        <Footer /> {/* Add the Footer component here */}
       </div>
-      <div className="quick-links">
-        <h2>Our Activities</h2>
-        <ul>
-          <li>Chauvihar Chhath kari Giriraj 7 Yatra</li>
-          <li>Shetrunjay Nadi Nahi Ne Anusthan</li>
-          <li>Giriraj Nav-tunk Pratimaji Ashtprakari Puja</li>
-          <li>Palkhi Yatra</li>
-          <li>Guru Bhagwant Vaiyavach</li>
-          <li>Shasan Prabhavna</li>
-          <li>Sadharmik Bhakti</li>
-          <li>Anukampa</li>
-          <li><Link to="/quicklinks/VoteComponent">VoteComponent</Link></li>
-          <li>& more</li>
-        </ul>
-      </div>
-    </div>
-    <div>
-              <Footer /> {/* Add the Footer component here */}
-
-    </div>
     </>
   );
 };
