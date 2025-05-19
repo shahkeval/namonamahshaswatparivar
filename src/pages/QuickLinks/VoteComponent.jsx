@@ -11,7 +11,7 @@ import { db } from "../../firebase"; // Make sure this path points to your fireb
 import './VoteComponent.css'; // Import the CSS file
 import RSSM from '../../assets/RSSM.png'
 const VoteComponent = () => {
-const [votes, setVotes] = useState({ optionA: 0, optionB: 0 ,optionC: 0 ,ritika_pathsala:0});
+const [votes, setVotes] = useState({ gandhi: 0, laxmi: 0 ,mahaverr: 0});
 const [voted, setVoted] = useState(false);
 
 // Generate or retrieve a device ID
@@ -32,7 +32,7 @@ const voteSnap = await getDoc(voteDocRef);
 if (voteSnap.exists()) {
   setVotes(voteSnap.data());
 } else {
-  await setDoc(voteDocRef, { optionA: 0, optionB: 0 ,optionC : 0, ritika_pathsala:0});
+  await setDoc(voteDocRef, { gandhi: 0, laxmi: 0 ,mahaverr : 0});
 }
 
 const deviceId = getDeviceId();
@@ -80,41 +80,34 @@ return (
   <>
     <button
       className="vote-button optionA"
-      onClick={() => handleVote("optionA")}
+      onClick={() => handleVote("gandhi")}
       disabled={voted}
     >
-      Pathsala A
+      shree gandhinagar swe. sangh(shanti ni surbhio)
     </button>
     <button
       className="vote-button optionB"
-      onClick={() => handleVote("optionB")}
+      onClick={() => handleVote("laxmi")}
       disabled={voted}
     >
-      Pathsala B
+      shree laxmivardhak jain sangh(rushabh na range)
     </button>
     <button
       className="vote-button optionC"
-      onClick={() => handleVote("optionC")}
+      onClick={() => handleVote("mahaverr")}
       disabled={voted}
     >
-      Pathsala C
-    </button>
-    <button
-      className="vote-button ritika_pathsala"
-      onClick={() => handleVote("ritika_pathsala")}
-      disabled={voted}
-    >
-      Ritika arav Pathsala
+      shree mahavirswami swe. sangh(jay giriraj)
     </button>
   </>
 ) : (
   <p className="thank-you-message"></p>
 )}
 <div className="vote-count">
-<p>Pathsala A: {votes.optionA}</p>
-<p>Pathsala B: {votes.optionB}</p>
-<p>Pathsala C: {votes.optionC}</p>
-<p>ritika arav Pahasala: {votes.ritika_pathsala}</p>
+<p> shree gandhinagar swe. sangh(shanti ni surbhio): {votes.gandhi}</p>
+<p>shree laxmivardhak jain sangh(rushabh na range): {votes.laxmi}</p>
+<p>shree mahavirswami swe. sangh(jay giriraj): {votes.mahaverr}</p>
+
 {voted && (
 <p className="thank-you-message">Thanks for voting!<br></br> Your Vote matters a lot ...!</p>
 )}
