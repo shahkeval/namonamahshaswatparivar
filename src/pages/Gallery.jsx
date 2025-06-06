@@ -40,7 +40,7 @@ const Gallery = () => {
     },
     {
       id: 'jiv daya',
-      name: 'Jaiv Daya',
+      name: 'Jiv Daya',
       images: [
         { src: '/images/jiv/jiv1.jpg', alt: 'jiv Image 1' },
         { src: '/images/jiv/jiv2.jpg', alt: 'jiv Image 2' },

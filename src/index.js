@@ -20,6 +20,10 @@ import Shasan from './pages/QuickLinks/Shasan';
 import Sadharmik from './pages/QuickLinks/Sadharmik';
 import Anukampa from './pages/QuickLinks/Anukampa';
 import VoteComponent from './pages/QuickLinks/VoteComponent';
+import Login from "./pages/Login";
+import AdminDashboard from './pages/AdminDashboard';
+import DonationManagement from './pages/DonationManagement';
+import RSSM from './pages/QuickLinks/RSSM';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -45,6 +49,10 @@ root.render(
           <Route path="quicklinks/sadharmik" element={<Sadharmik />} />
           <Route path="quicklinks/anukampa" element={<Anukampa />} />
           <Route path="quicklinks/VoteComponent" element={<VoteComponent />} />
+          <Route path="/admin/login" element={<Login />} />
+          <Route path="/admin/dashboard" element={<AdminDashboard />} />
+          <Route path="/admin/donations" element={<DonationManagement />} />
+          <Route path="/RSSM" element={<RSSM/>} />
         </Route>
       </Routes>
     </Router>

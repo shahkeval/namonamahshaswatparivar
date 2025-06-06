@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import './Donation.css';
 import { QRCodeSVG } from 'qrcode.react';
 import Footer from '../components/Footer';
-import emailjs from "emailjs-com";
+import axios from 'axios'; // Import axios for making HTTP requests
+import gPayLogo from '../assets/gpay-logo (2).png'; // Import the gPay logo
 
 const Donation = () => {
   const initialFormState = {
@@ -50,25 +51,31 @@ const Donation = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    emailjs
-    .sendForm(
-      "service_264rxjp",
-      "template_7oremm9",
-      e.target, // Sends form data to the template
-      "7vYFlUx2o5N3Cv3Ll"
-    )
     const { name, category, phone, address, amount } = formData;
+
     if (!name || !category || !phone || !address || !amount) {
       setError('Please fill in all required fields.');
       return;
     }
+
     setError('');
-    setSubmitted(true);
-    const qrString = `upi://pay?pa=namonamahshashwatcha.62486048@hdfcbank&pn=${formData.name}&am=${formData.amount}&cu=INR&tn=${formData.message}`;
-    setQrData(qrString);
-    setTimer(300); // 5 minutes
+    
+    // Send data to the backend
+    try {
+      const response = await axios.post('http://localhost:5000/api/donations', formData);
+      console.log('Donation saved:', response.data);
+      
+      // Generate QR code after successful donation
+      const qrString = `upi://pay?pa=namonamahshashwatcha.62486048@hdfcbank&pn=${formData.name}&am=${formData.amount}&cu=INR&tn=${formData.message}`;
+      setQrData(qrString);
+      setTimer(300); // 5 minutes
+      setSubmitted(true); // Set submitted to true after successful save
+    } catch (error) {
+      console.error('Error saving donation:', error);
+      setError('Failed to save donation. Please try again.');
+    }
   };
 
   const handleBack = () => {
@@ -77,6 +84,12 @@ const Donation = () => {
     setFormData(initialFormState);
     setError('');
     setTimer(10);
+  };
+
+  const handleGPay = () => {
+    const { amount, name, message } = formData;
+    const gPayUrl = `upi://pay?pa=namonamahshashwatcha.62486048@hdfcbank&pn=${name}&am=${amount}&cu=INR&tn=${message}`;
+    window.open(gPayUrl, '_blank'); // Open gPay in a new tab
   };
 
   return (
@@ -109,7 +122,14 @@ const Donation = () => {
           <p>Scan the QR code below to complete your donation. Valid for: {Math.floor(timer / 60)}:{('0' + (timer % 60)).slice(-2)}</p>
           <QRCodeSVG value={qrData} size={256} />
           <br />
+          <button className="gpay-button" onClick={handleGPay}>
+            <img src={gPayLogo} alt="Google Pay" style={{ width: '30px' }} />
+            Pay with gPay
+          </button>
+          
+          <div>
           <button className="back-button" onClick={handleBack}>Back</button>
+          </div>
         </div>
       )}
     </div>

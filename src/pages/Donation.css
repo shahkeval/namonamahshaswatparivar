@@ -1,7 +1,7 @@
 /* Donation.css */
 
 .donation-container {
-    background-color: #fff8f0;
+    background-color: #f7f5f2;
     padding: 2rem;
     max-width: 600px;
     margin: 20px auto;
@@ -59,20 +59,25 @@
     text-align: center;
   }
   
-  .back-button {
-    margin-top: 1.5rem;
-    padding: 0.6rem 1.5rem;
-    font-size: 1rem;
-    background-color: #700b0b;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+  .back-button, .gpay-button {
+    background-color: #8B0000; /* Dark red background */
+    color: white; /* White text */
+    border: none; /* No border */
+    padding: 10px 15px; /* Padding for the button */
+    margin: 10px; /* Margin between buttons */
+    cursor: pointer; /* Pointer cursor on hover */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 16px; /* Font size */
+    display: inline-flex; /* Align items in a row */
+    align-items: center; /* Center items vertically */
   }
   
-  .back-button:hover {
-    background-color: #a01010;
+  .gpay-button img {
+    margin-right: 5px; /* Space between logo and text */
+  }
+  
+  .back-button:hover, .gpay-button:hover {
+    background-color: #A52A2A; /* Lighter red on hover */
   }
   
   @media (max-width: 600px) {

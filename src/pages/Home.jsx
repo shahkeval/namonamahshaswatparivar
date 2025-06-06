@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'; // Import Link
 import './Home.css'; // Create a new CSS file for styling
 import Footer from '../components/Footer'; // Import the Footer component
 import Breadcrumb from '../components/Breadcrumb';
-import Popup from '../components/Popup'; // Import the Popup component
+import events from '../data/events'; // Import your events data
 
 const images = [
   '/images/bapji.jpg',
@@ -14,7 +14,7 @@ const images = [
 
 const Home = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [showPopup, setShowPopup] = useState(false); // State to control popup visibility
+  const upcomingEvents = events.filter(event => event.type === 'upcoming'); // Filter upcoming events
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -24,26 +24,8 @@ const Home = () => {
     return () => clearInterval(interval); // Cleanup on unmount
   }, []);
 
-  useEffect(() => {
-    // Check localStorage to see if the popup has been shown
-    const hasSeenPopup = localStorage.getItem('hasSeenPopup');
-    if (!hasSeenPopup) {
-      setShowPopup(true); // Show the popup if not seen
-      localStorage.setItem('hasSeenPopup', 'true'); // Set the key in localStorage
-    }
-  }, []);
-
-  const handleVoteNow = () => {
-    setShowPopup(false); // Close the popup
-  };
-
-  const handleClosePopup = () => {
-    setShowPopup(false); // Close the popup
-  };
-
   return (
     <>
-      {showPopup && <Popup onClose={handleClosePopup} onVote={handleVoteNow} />}
       <div className="home-container">
         <div className="image-section">
           <img src={images[currentImageIndex]} alt="Description" />
@@ -53,12 +35,15 @@ const Home = () => {
           <h3> યૌવન એટલે શું? વીજળીનો તણખો, <br />
             જો ઝબકે તો અજવાળુ, નહિંતર ભડકો.. <br /></h3>
           <p style={{ textAlign: "justify" }}>
-            સ્વાર્થી દુનિયાની વચ્ચે રહી નિ:સ્વાર્થતાના મીઠડા ઘુંટ પીવા અને પીવડાવવા માટે દુર્લભ મનુષ્યભવને પ્રત્યેક ક્ષણે ચિરંજીવ બનાવી દેવા માટે પરમાત્મા મહાવીર સ્વામી કથિત શાશ્વત સુખનું લક્ષ અને આત્માના પક્ષને નજર સમક્ષ રાખી ક્ષણે ક્ષણને જીવંત બનાવવા માટે જેઓ સતત પ્રયત્નશીલ છે, જેઓ હંમેશા શાસનને સમર્પિત છે, એવા સત્ત્વશાળી યુવાનોની મજબુત સાંકળ એટલે<b> નમો નમઃ શાશ્વત પરિવાર.</b>
+          સ્વાર્થી દુનિયાની વચ્ચે રહી નિ:સ્વાર્થતાના મીઠડા ઘુંટ પીવા અને પીવડાવવા માટે દુર્લભ મનુષ્યભવને પ્રત્યેક ક્ષણે ચિરંજીવ બનાવી દેવા માટે પરમાત્મા મહાવીર સ્વામી કથિત શાશ્વત સુખનું લક્ષ અને આત્માના પક્ષને નજર સમક્ષ રાખી ક્ષણે ક્ષણને જીવંત બનાવવા માટે જેઓ સતત પ્રયત્નશીલ છે, જેઓ હંમેશા શાસનને સમર્પિત છે, એવા સત્ત્વશાળી યુવાનોની મજબુત સાંકળ એટલે, <p style={{textAlign:"center"}}> <b> નમો નમઃ શાશ્વત પરિવાર.</b></p>
           </p>
         </div>
         <div className="quick-links">
           <h2>Our Activities</h2>
           <ul>
+            <li>
+              <Link to="/RSSM">Rushabh Samrajya Sanskar Mission ("#Giriraj500misalgiri")</Link>
+            </li>
             <li>Chauvihar Chhath kari Giriraj Ni 7 Yatra</li>
             <li>Shetrunjay Nadi Nahi Ne Anusthan</li>
             <li>Giriraj Nav-tunk Pratimaji Ashtprakari Puja</li>
@@ -72,6 +57,32 @@ const Home = () => {
           </ul>
         </div>
       </div>
+
+      {/* Upcoming Events Section */}
+      <div className="upcoming-events">
+        <h2>Upcoming Events</h2>
+        <div className="events-grid">
+          {upcomingEvents.length > 0 ? (
+            upcomingEvents.map(event => (
+              <div key={event.id} className="event-card">
+                <Link to={`/events/${event.id}`}>
+                  <div className="event-card-image">
+                    <img src={event.image} alt={event.title} loading="lazy" />
+                    <div className="event-badge">Upcoming</div>
+                  </div>
+                  <div className="event-card-content">
+                    <h3>{event.title}</h3>
+                    <p>{event.date}</p>
+                  </div>
+                </Link>
+              </div>
+            ))
+          ) : (
+            <p>No upcoming events available.</p>
+          )}
+        </div>
+      </div>
+
       <div>
         <Footer /> {/* Add the Footer component here */}
       </div>

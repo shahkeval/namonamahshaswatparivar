@@ -1,11 +1,13 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Navbar.css';
-import logo from '../assets/logo.png'; // Make sure this path is correct
+import logo from '../assets/logo.png'; 
+import LogoutIcon from '@mui/icons-material/Logout';// Make sure this path is correct
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef(null); // Create a ref for the menu
+  const navigate = useNavigate();
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -13,6 +15,11 @@ const Navbar = () => {
 
   const closeMenu = () => {
     setMenuOpen(false);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('adminToken'); // Remove the token
+    navigate('/admin/login'); // Redirect to login page
   };
 
   // Close the menu when clicking outside of it
@@ -28,6 +35,8 @@ const Navbar = () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [menuOpen]);
+
+  const isLoggedIn = !!localStorage.getItem('adminToken'); // Check if user is logged in
 
   return (
     <nav className="navbar">
@@ -49,7 +58,9 @@ const Navbar = () => {
         <li><Link to="/donation" onClick={closeMenu}>Donation</Link></li>
         <li><Link to="/gallery" onClick={closeMenu}>Gallery</Link></li>
         <li><Link to="/contact" onClick={closeMenu}>Contact</Link></li>
-        <li style={{color:'red'}}><Link to="/voting" onClick={closeMenu}>Voting</Link></li>
+        {isLoggedIn && (
+          <li style={{cursor:"pointer"}} onClick={handleLogout}><LogoutIcon/></li> // Logout button
+        )}
       </ul>
     </nav>
   );
