@@ -23,6 +23,10 @@ app.use('/api/auth', require('./routes/auth'));
 
 const PORT = process.env.PORT || 5000;
 
+app.get('/', async (req, res) => {
+  res.json("WORKING");
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running in ${process.env.NODE_ENV} mode on port ${PORT}`);
 }); 
