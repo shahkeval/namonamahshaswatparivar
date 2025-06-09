@@ -2,6 +2,7 @@ const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
 const connectDB = require('./config/db');
+const rssmsuRoutes = require('./routes/rssmsu');
 
 // Load env vars
 dotenv.config();
@@ -20,6 +21,7 @@ app.use(cors());
 // Mount routers
 app.use('/api/donations', require('./routes/donationRoutes'));
 app.use('/api/auth', require('./routes/auth'));
+app.use('/api/rssmsu', rssmsuRoutes);
 
 const PORT = process.env.PORT || 5000;
 

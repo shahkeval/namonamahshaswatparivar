@@ -465,3 +465,19 @@ form {
   margin-top: 1rem;
   text-align: center;
 }
+
+/* Style for the select dropdown */
+select {
+    padding: 0.6rem; /* Add padding for better spacing */
+    border: 1px solid var(--light-gray); /* Border color */
+    border-radius: 6px; /* Rounded corners */
+    font-size: 1rem; /* Font size */
+    transition: border-color 0.3s; /* Smooth transition for border color */
+    width: 100%; /* Make it full width */
+}
+
+/* Focus state for the select dropdown */
+select:focus {
+    border-color: var(--accent-color); /* Change border color on focus */
+    outline: none; /* Remove default outline */
+}

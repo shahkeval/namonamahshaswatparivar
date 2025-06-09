@@ -64,7 +64,8 @@ const Donation = () => {
     
     // Send data to the backend
     try {
-      const response = await axios.post('https://namonamahshaswatparivar-dt17.vercel.app/api/donations', formData);
+      
+      const response = await axios.post(`https://namonamahshaswatparivar-dt17.vercel.app/api/donations`, formData);
       console.log('Donation saved:', response.data);
       
       // Generate QR code after successful donation
