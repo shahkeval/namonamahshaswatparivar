@@ -24,6 +24,7 @@ import Login from "./pages/Login";
 import AdminDashboard from './pages/AdminDashboard';
 import DonationManagement from './pages/DonationManagement';
 import RSSM from './pages/QuickLinks/RSSM';
+import Rssmregistration from './pages/RssmuRegistrationManagement';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -52,6 +53,7 @@ root.render(
           <Route path="/admin/login" element={<Login />} />
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
           <Route path="/admin/donations" element={<DonationManagement />} />
+          <Route path="/admin/rssmregistrations" element={<Rssmregistration/>} />
           <Route path="/RSSM" element={<RSSM/>} />
         </Route>
       </Routes>

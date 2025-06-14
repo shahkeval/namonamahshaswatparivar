@@ -2,6 +2,7 @@ import './RSSM.css'; // Ensure you have the CSS file imported
 import events from '../../data/rssmEvents.json'; // Import your events data
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import Events from '../Events';
 
 const RSSM = () => {
     const [activeType, setActiveType] = useState('upcoming'); // State to manage event type
@@ -30,12 +31,13 @@ const RSSM = () => {
                 ></iframe>
             </div>
             <div className="event-message" style={{ textAlign: 'center', margin: '20px 0' }}>
-                <h2>View Our Upcoming Events</h2>
+                {/* <h2>View Our Upcoming Events</h2>
                 <Link to="/events">
                     <button className="tab-button" style={{ padding: '10px 20px', fontSize: '16px' }}>
                         View Events
                     </button>
-                </Link>
+                </Link> */}
+                <Events flag="1"/>
             </div>
         </div>
     );

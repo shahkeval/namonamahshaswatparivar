@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'; // Import Link
 import './Home.css'; // Create a new CSS file for styling
 import Footer from '../components/Footer'; // Import the Footer component
 import Breadcrumb from '../components/Breadcrumb';
-import events from '../data/events'; // Import your events data
+import events from '../data/events'; 
 
 const images = [
   '/images/bapji.jpg',
@@ -40,8 +40,8 @@ const Home = () => {
         </div>
         <div className="quick-links">
           <h2>Our Activities</h2>
-          <ul>
-            <li>
+          <ul style={{ listStyleType: 'disc', padding: 0 }}>
+            <li style={{color:'red'}}>
               <Link to="/RSSM">Rushabh Samrajya Sanskar Mission ("#Giriraj500misalgiri")</Link>
             </li>
             <li>Chauvihar Chhath kari Giriraj Ni 7 Yatra</li>
@@ -52,7 +52,7 @@ const Home = () => {
             <li>Shasan Prabhavna</li>
             <li>Sadharmik Bhakti</li>
             <li>Anukampa</li>
-            <li>Jivdaya </li>
+            <li>Jivdaya</li>
             <li>& more</li>
           </ul>
         </div>

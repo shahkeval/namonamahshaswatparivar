@@ -16,7 +16,7 @@ const Login = () => {
     setError('');
     setSuccess('');
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/login', { username, password });
+      const response = await axios.post('https://namonamahshaswatparivar-dt17.vercel.app/api/auth/login', { username, password });
       if (response.data.token) {
         localStorage.setItem('adminToken', response.data.token);
         setSuccess('Login successful! Redirecting...');

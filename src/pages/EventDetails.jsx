@@ -467,10 +467,10 @@ const EventDetails = () => {
                         required
                       >
                         <option value="">Select Category</option>
-                        <option value="Category 1">Category 1 : 5-15 yrs</option>
-                        <option value="Category 2">Category 2 : 15-25 yrs</option>
-                        <option value="Category 3">Category 3 : 25-45 yrs</option>
-                        <option value="Category 4">Category 4 : 45+ yrs</option>
+                        <option value="5-15 yrs">Category 1 : 5-15 yrs</option>
+                        <option value="15-25 yrs">Category 2 : 15-25 yrs</option> 
+                        <option value="25-45 yrs">Category 3 : 25-45 yrs</option>
+                        <option value="45+ yrs">Category 4 : 45+ yrs</option>
                       </select>
                     </div>
                     <button

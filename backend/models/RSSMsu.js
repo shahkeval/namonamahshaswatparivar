@@ -18,8 +18,9 @@ const RSSMsuSchema = new mongoose.Schema({
 RSSMsuSchema.pre('save', async function(next) {
   if (!this.registrationId) {
     const Model = this.constructor;
-    const count = await Model.countDocuments();
-    this.registrationId = `RSSM-${(count + 1).toString().padStart(5, '0')}`;
+    const lastRegistration = await Model.findOne().sort({ registrationId: -1 }).exec();
+    const lastId = lastRegistration ? parseInt(lastRegistration.registrationId.split('-')[1]) : 0; // Extract the numeric part
+    this.registrationId = `RSSM-${(lastId + 1).toString().padStart(5, '0')}`; // Increment and format
   }
   next();
 });
