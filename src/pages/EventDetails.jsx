@@ -152,11 +152,6 @@ const EventDetails = () => {
       });
       setShowThankYouMessage(true);
       setFormType('custom'); // Set form type to custom
-
-      setTimeout(() => {
-        setShowThankYouMessage(false);
-        setFormType('custom'); // Reset to custom form after thank you
-      }, 5000);
     } catch (err) {
       alert('Registration failed. Please try again.');
     } finally {
@@ -178,16 +173,17 @@ const EventDetails = () => {
       });
       setShowThankYouMessage(true);
       setFormType('default'); // Set form type to default
-
-      setTimeout(() => {
-        setShowThankYouMessage(false);
-        setFormType('default'); // Reset to default form after thank you
-      }, 5000);
     } catch (err) {
       alert('Registration failed. Please try again.');
     } finally {
       setIsSubmittingRegistration(false);
     }
+  };
+
+  const handleSubmitAnotherForm = () => {
+    setShowThankYouMessage(false); // Hide thank you message
+    // Reset form data if needed
+    // Optionally, you can also reset the form fields here
   };
 
   const toggleDonationForm = () => {
@@ -357,6 +353,9 @@ const EventDetails = () => {
                   <i className="icon-check"></i>
                   <h3>Thank You!</h3>
                   <p>Your registration has been submitted successfully. We will contact you with more details soon.</p>
+                  <button onClick={handleSubmitAnotherForm} className="submit-another-form-btn">
+                    Submit Another Form
+                  </button>
                 </div>
               ) : (
                 <>
@@ -561,7 +560,7 @@ const EventDetails = () => {
 
               <div className="contact-info">
                 <p>For inquiries, please contact us:</p>
-                <a href="tel:9426364451">+91 9426364451</a>
+                {/* <a href="tel:9426364451">+91 9426364451</a> */}
                 <a href="mailto:namonamahshaswatparivar9@gmail.com">namonamahshaswatparivar9@gmail.com</a>
               </div>
             </div>

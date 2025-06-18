@@ -481,3 +481,20 @@ select:focus {
     border-color: var(--accent-color); /* Change border color on focus */
     outline: none; /* Remove default outline */
 }
+
+.submit-another-form-btn {
+    background-color: var(--accent-color); /* Use the same accent color */
+    color: white; /* Text color */
+    border: none; /* No border */
+    padding: 0.8rem 1.2rem; /* Padding for the button */
+    border-radius: 25px; /* Rounded corners */
+    font-weight: 600; /* Bold text */
+    font-size: 1rem; /* Font size */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: var(--transition); /* Smooth transition */
+    margin-top: 10px; /* Space above the button */
+}
+
+.submit-another-form-btn:hover {
+    background-color: #5a0909; /* Darken on hover */
+}
