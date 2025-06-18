@@ -42,7 +42,7 @@ const Navbar = () => {
     <nav className="navbar">
       <div className="navbar-logo">
         <img src={logo} alt="Logo" className="navbar-logo-img" />
-        <Link to="/"><span className="navbar-logo-text">Namo Namah Shashwat Parivar</span></Link>
+        <Link to="/"><span className="navbar-logo-text">Namo Namah Shaswat Parivar</span></Link>
       </div>
 
       <div className="burger" onClick={toggleMenu}>
