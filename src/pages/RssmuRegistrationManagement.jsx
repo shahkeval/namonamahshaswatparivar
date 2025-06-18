@@ -272,16 +272,31 @@ const RssmuRegistrationManagement = () => {
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="gender">Gender*</label>
-                <input
-                  type="text"
-                  id="gender"
-                  name="gender"
-                  placeholder="Enter your gender"
-                  value={form.gender}
-                  onChange={handleFormChange}
-                  required
-                />
+                <label>Gender*</label>
+                <div>
+                  <label>
+                    <input
+                      type="radio"
+                      name="gender"
+                      value="Male"
+                      checked={form.gender === 'Male'}
+                      onChange={handleFormChange}
+                      required
+                    />
+                    Male
+                  </label>
+                  <label>
+                    <input
+                      type="radio"
+                      name="gender"
+                      value="Female"
+                      checked={form.gender === 'Female'}
+                      onChange={handleFormChange}
+                      required
+                    />
+                    Female
+                  </label>
+                </div>
               </div>
               <div className="form-group">
                 <label htmlFor="profession">Profession*</label>
@@ -317,10 +332,11 @@ const RssmuRegistrationManagement = () => {
                   required
                 >
                   <option value="">Select Category</option>
-                  <option value="5-15 yrs">Category 1: 5-15 yrs</option>
-                  <option value="15-25 yrs">Category 2: 15-25 yrs</option>
-                  <option value="25-45 yrs">Category 3: 25-45 yrs</option>
-                  <option value="45+ yrs">Category 4: 45+ yrs</option>
+                  <option value="6-12 yrs">Category 1: 6-12 yrs</option>
+                  <option value="12-18 yrs">Category 2: 12-18 yrs</option>
+                  <option value="18-30 yrs">Category 3: 18-30 yrs</option>
+                  <option value="30-45 yrs">Category 4: 30-45 yrs</option>
+                  <option value="45+ yrs">Category 5: 45+ yrs</option>
                 </select>
               </div>
             </form>

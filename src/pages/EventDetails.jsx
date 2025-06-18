@@ -13,17 +13,17 @@ import axios from 'axios';
 const EventDetails = () => {
   const { id } = useParams();
   const event = events.find(e => e.id === id);
-  
+
   // Separate state for donation form
   const [donationFormData, setDonationFormData] = useState({
     name: '',
     email: '',
-    category:event.title,
+    category: event.title,
     phone: '',
     message: '',
     amount: '',
   });
-  
+
   // Separate state for custom registration form
   const [customRegistrationData, setCustomRegistrationData] = useState({
     fullName: '',
@@ -112,12 +112,12 @@ const EventDetails = () => {
     e.preventDefault();
     setIsSubmittingDonation(true);
     emailjs
-    .sendForm(
-      "service_264rxjp",
-      "template_7oremm9",
-      e.target, // Sends form data to the template
-      "7vYFlUx2o5N3Cv3Ll"
-    )
+      .sendForm(
+        "service_264rxjp",
+        "template_7oremm9",
+        e.target, // Sends form data to the template
+        "7vYFlUx2o5N3Cv3Ll"
+      )
 
     const qrString = `upi://pay?pa=namonamahshashwatcha.62486048@hdfcbank&pn=${donationFormData.fullName}&am=${donationFormData.amount}&cu=INR&tn=${donationFormData.message}`;
     setQrData(qrString);
@@ -126,7 +126,7 @@ const EventDetails = () => {
     setDonationFormData({
       name: '',
       email: '',
-      category:event.title,
+      category: event.title,
       phone: '',
       message: '',
       amount: '',
@@ -202,84 +202,84 @@ const EventDetails = () => {
 
   return (
     <>
-    <div className="event-details-container">
-      <div className="breadcrumb">
-        <Link to="/events">Events</Link> / <span>{event.title}</span>
-      </div>
+      <div className="event-details-container">
+        <div className="breadcrumb">
+          <Link to="/events">Events</Link> / <span>{event.title}</span>
+        </div>
 
-      <div className="event-details-content">
-        <div className="event-info">
-          <div className="event-header">
-            <h1>{event.title}</h1>
-          </div>
-
-          <div className="event-image-container">
-            <img src={event.image} alt={event.title} className="event-feature-image fit-image" />
-          </div>
-
-          <div className="event-meta-info">
-            <div className="meta-item">
-              <DateRangeIcon />
-              <div>
-                <h4>Date & Time</h4>
-                <p style={{textAlign:'start'}}>{event.date}</p>
-                {event.time && <p>{event.time}</p>}
-              </div>
+        <div className="event-details-content">
+          <div className="event-info">
+            <div className="event-header">
+              <h1>{event.title}</h1>
             </div>
 
-            {event.location && (
+            <div className="event-image-container">
+              <img src={event.image} alt={event.title} className="event-feature-image fit-image" />
+            </div>
+
+            <div className="event-meta-info">
               <div className="meta-item">
-                <LocationPinIcon />
+                <DateRangeIcon />
                 <div>
-                  <h4>Location</h4>
-                  <p>{event.location}</p>
+                  <h4>Date & Time</h4>
+                  <p style={{ textAlign: 'start' }}>{event.date}</p>
+                  {event.time && <p>{event.time}</p>}
                 </div>
               </div>
-            )}
 
-            {event.organizer && (
-              <div className="meta-item">
-                <PeopleIcon />
-                <div>
-                  <h4>Organizer</h4>
-                  <p>{event.organizer}</p>
+              {event.location && (
+                <div className="meta-item">
+                  <LocationPinIcon />
+                  <div>
+                    <h4>Location</h4>
+                    <p>{event.location}</p>
+                  </div>
                 </div>
-              </div>
-            )}
-          </div>
+              )}
 
-          <div className="event-description-full">
-            <h2>About This Event</h2>
-            <p className="event-description-text" style={{textAlign:'left'}}>
-              {event.description.split('\\n').map((line, idx) => (
-                <React.Fragment key={idx}>
-                  {line}
-                  <br />
-                </React.Fragment>
-              ))}
-            </p>
-            {event.schedule && (
-              <div className="event-schedule">
-                <h3>Event Schedule</h3>
-                <ul>
-                  {event.schedule.map((item, index) => (
-                    <li key={index}>
-                      <span className="schedule-time">{item.time}</span>
-                      <span className="schedule-activity">{item.activity}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-          </div>
+              {event.organizer && (
+                <div className="meta-item">
+                  <PeopleIcon />
+                  <div>
+                    <h4>Organizer</h4>
+                    <p>{event.organizer}</p>
+                  </div>
+                </div>
+              )}
+            </div>
 
-          {/* Donation Button */}
-          {/* <button className="donation-button" onClick={toggleDonationForm}>
+            <div className="event-description-full">
+              <h2>About This Event</h2>
+              <p className="event-description-text" style={{ textAlign: 'left' }}>
+                {event.description.split('\\n').map((line, idx) => (
+                  <React.Fragment key={idx}>
+                    {line}
+                    <br />
+                  </React.Fragment>
+                ))}
+              </p>
+              {event.schedule && (
+                <div className="event-schedule">
+                  <h3>Event Schedule</h3>
+                  <ul>
+                    {event.schedule.map((item, index) => (
+                      <li key={index}>
+                        <span className="schedule-time">{item.time}</span>
+                        <span className="schedule-activity">{item.activity}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+
+            {/* Donation Button */}
+            {/* <button className="donation-button" onClick={toggleDonationForm}>
             Donation
           </button> */}
 
-          {/* Donation Form */}
-          {/* {showDonationForm && (
+            {/* Donation Form */}
+            {/* {showDonationForm && (
             <div className="donation-form-wrapper">
               <h2>Donation Form</h2>
               <form onSubmit={handleDonationSubmit}>
@@ -334,249 +334,265 @@ const EventDetails = () => {
             </div>
           )} */}
 
-          {event.images && event.images.length > 0 && (
-            <div className="event-gallery">
-              <h3>Event Gallery</h3>
-              <div className="gallery-grid">
-                {event.images.map((img, index) => (
-                  <div key={index} className="gallery-item">
-                    <img src={img} alt={`${event.title} - image ${index + 1}`} className="fit-image" />
-                  </div>
-                ))}
+            {event.images && event.images.length > 0 && (
+              <div className="event-gallery">
+                <h3>Event Gallery</h3>
+                <div className="gallery-grid">
+                  {event.images.map((img, index) => (
+                    <div key={index} className="gallery-item">
+                      <img src={img} alt={`${event.title} - image ${index + 1}`} className="fit-image" />
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
-          )}
-
-        
-        </div>
-
-        <div className="registration-container">
-          <div className="registration-child">
-            {showThankYouMessage ? (
-              <div className="success-message">
-                <i className="icon-check"></i>
-                <h3>Thank You!</h3>
-                <p>Your registration has been submitted successfully. We will contact you with more details soon.</p>
-              </div>
-            ) : (
-              <>
-                {event.id === 'RSSM-સુલેખન કળા' ? (
-                  <form onSubmit={handleCustomRegistrationSubmit}>
-                    <div className="form-group">
-                      <label htmlFor="fullName">Full Name*</label>
-                      <input
-                        type="text"
-                        id="fullName"
-                        name="fullName"
-                        placeholder="Enter your full name"
-                        value={customRegistrationData.fullName}
-                        onChange={(e) => setCustomRegistrationData({ ...customRegistrationData, fullName: e.target.value })}
-                        required
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor="city">City*</label>
-                      <input
-                        type="text"
-                        id="city"
-                        name="city"
-                        placeholder="Enter your city"
-                        value={customRegistrationData.city || ''}
-                        onChange={(e) => setCustomRegistrationData({ ...customRegistrationData, city: e.target.value })}
-                        required
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor="area">Area*</label>
-                      <input
-                        type="text"
-                        id="area"
-                        name="area"
-                        placeholder="Enter your area"
-                        value={customRegistrationData.area || ''}
-                        onChange={(e) => setCustomRegistrationData({ ...customRegistrationData, area: e.target.value })}
-                        required
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor="birthdate">Birth date*</label>
-                      <input
-                        type="date"
-                        id="birthdate"
-                        name="birthdate"
-                        value={customRegistrationData.birthdate || ''}
-                        onChange={(e) => setCustomRegistrationData({ ...customRegistrationData, birthdate: e.target.value })}
-                        required
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor="gender">Gender*</label>
-                      <input
-                        type="text"
-                        id="gender"
-                        name="gender"
-                        placeholder="Enter your gender"
-                        value={customRegistrationData.gender || ''}
-                        onChange={(e) => setCustomRegistrationData({ ...customRegistrationData, gender: e.target.value })}
-                        required
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor="profession">Profession*</label>
-                      <input
-                        type="text"
-                        id="profession"
-                        name="profession"
-                        placeholder="Enter your profession"
-                        value={customRegistrationData.profession || ''}
-                        onChange={(e) => setCustomRegistrationData({ ...customRegistrationData, profession: e.target.value })}
-                        required
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor="whatsapp">Whatsapp number*</label>
-                      <input
-                        type="tel"
-                        id="whatsapp"
-                        name="whatsapp"
-                        placeholder="Enter your Whatsapp number"
-                        value={customRegistrationData.whatsapp || ''}
-                        onChange={(e) => setCustomRegistrationData({ ...customRegistrationData, whatsapp: e.target.value })}
-                        required
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor="sangh">Sangh name*</label>
-                      <input
-                        type="text"
-                        id="sangh"
-                        name="sangh"
-                        placeholder="Enter your Sangh name"
-                        value={customRegistrationData.sangh || ''}
-                        onChange={(e) => setCustomRegistrationData({ ...customRegistrationData, sangh: e.target.value })}
-                        required
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor="category">Category*</label>
-                      <select
-                        id="category"
-                        name="category"
-                        value={customRegistrationData.category || ''}
-                        onChange={(e) => setCustomRegistrationData({ ...customRegistrationData, category: e.target.value })}
-                        required
-                      >
-                        <option value="">Select Category</option>
-                        <option value="5-15 yrs">Category 1 : 5-15 yrs</option>
-                        <option value="15-25 yrs">Category 2 : 15-25 yrs</option> 
-                        <option value="25-45 yrs">Category 3 : 25-45 yrs</option>
-                        <option value="45+ yrs">Category 4 : 45+ yrs</option>
-                      </select>
-                    </div>
-                    <button
-                      type="submit"
-                      className="submit-btn"
-                      disabled={isSubmittingRegistration}
-                    >
-                      {isSubmittingRegistration ? 'Submitting...' : 'Register Now'}
-                    </button>
-                  </form>
-                ) : (
-                  <form onSubmit={handleDefaultRegistrationSubmit}>
-                    <div className="form-group">
-                      <label htmlFor="fullName">Full Name*</label>
-                      <input
-                        type="text"
-                        id="fullName"
-                        name="fullName"
-                        placeholder="Enter your full name"
-                        value={defaultRegistrationData.fullName}
-                        onChange={(e) => setDefaultRegistrationData({ ...defaultRegistrationData, fullName: e.target.value })}
-                        required
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor="email">Email Address*</label>
-                      <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        placeholder="Enter your email address"
-                        value={defaultRegistrationData.email}
-                        onChange={(e) => setDefaultRegistrationData({ ...defaultRegistrationData, email: e.target.value })}
-                        required
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor="phone">Phone Number*</label>
-                      <input
-                        type="tel"
-                        id="phone"
-                        name="phone"
-                        placeholder="Enter your phone number"
-                        value={defaultRegistrationData.phone}
-                        onChange={(e) => setDefaultRegistrationData({ ...defaultRegistrationData, phone: e.target.value })}
-                        required
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor="message">Additional Message</label>
-                      <textarea
-                        id="message"
-                        name="message"
-                        placeholder="Any specific requirements or questions..."
-                        rows="4"
-                        style={{maxWidth:"316px"}}
-                        value={defaultRegistrationData.message}
-                        onChange={(e) => setDefaultRegistrationData({ ...defaultRegistrationData, message: e.target.value })}
-                      ></textarea>
-                    </div>
-                    <button
-                      type="submit"
-                      className="submit-btn"
-                      disabled={isSubmittingRegistration}
-                    >
-                      {isSubmittingRegistration ? 'Submitting...' : 'Register Now'}
-                    </button>
-                  </form>
-                )}
-              </>
             )}
 
-            <div className="contact-info">
-              <p>For inquiries, please contact us:</p>
-              <a href="tel:9426364451">+91 9426364451</a>
-              <a href="mailto:namonamahshaswatparivar9@gmail.com">namonamahshaswatparivar9@gmail.com</a>
+
+          </div>
+
+          <div className="registration-container">
+            <div className="registration-child">
+              {showThankYouMessage ? (
+                <div className="success-message">
+                  <i className="icon-check"></i>
+                  <h3>Thank You!</h3>
+                  <p>Your registration has been submitted successfully. We will contact you with more details soon.</p>
+                </div>
+              ) : (
+                <>
+                  {event.id === 'RSSM-સુલેખન કળા' ? (
+                    <form onSubmit={handleCustomRegistrationSubmit}>
+                      <div className="form-group">
+                        <label htmlFor="fullName">Full Name*</label>
+                        <input
+                          type="text"
+                          id="fullName"
+                          name="fullName"
+                          placeholder="Enter your full name"
+                          value={customRegistrationData.fullName}
+                          onChange={(e) => setCustomRegistrationData({ ...customRegistrationData, fullName: e.target.value })}
+                          required
+                        />
+                      </div>
+                      <div className="form-group">
+                        <label htmlFor="city">City*</label>
+                        <input
+                          type="text"
+                          id="city"
+                          name="city"
+                          placeholder="Enter your city"
+                          value={customRegistrationData.city || ''}
+                          onChange={(e) => setCustomRegistrationData({ ...customRegistrationData, city: e.target.value })}
+                          required
+                        />
+                      </div>
+                      <div className="form-group">
+                        <label htmlFor="area">Area*</label>
+                        <input
+                          type="text"
+                          id="area"
+                          name="area"
+                          placeholder="Enter your area"
+                          value={customRegistrationData.area || ''}
+                          onChange={(e) => setCustomRegistrationData({ ...customRegistrationData, area: e.target.value })}
+                          required
+                        />
+                      </div>
+                      <div className="form-group">
+                        <label htmlFor="birthdate">Birth date*</label>
+                        <input
+                          type="date"
+                          id="birthdate"
+                          name="birthdate"
+                          value={customRegistrationData.birthdate || ''}
+                          onChange={(e) => setCustomRegistrationData({ ...customRegistrationData, birthdate: e.target.value })}
+                          required
+                        />
+                      </div>
+                      <div className="form-group">
+                        <label htmlFor="gender">Gender*</label>
+                        <div>
+                          <label>
+                            <input
+                              type="radio"
+                              name="gender"
+                              value="Male"
+                              checked={customRegistrationData.gender === 'Male'}
+                              onChange={(e) => setCustomRegistrationData({ ...customRegistrationData, gender: e.target.value })}
+                              required
+                            />
+                            Male
+                          </label>
+                          <label>
+                            <input
+                              type="radio"
+                              name="gender"
+                              value="Female"
+                              checked={customRegistrationData.gender === 'Female'}
+                              onChange={(e) => setCustomRegistrationData({ ...customRegistrationData, gender: e.target.value })}
+                              required
+                            />
+                            Female
+                          </label>
+                        </div>
+                      </div>
+                      <div className="form-group">
+                        <label htmlFor="profession">Profession*</label>
+                        <input
+                          type="text"
+                          id="profession"
+                          name="profession"
+                          placeholder="Enter your profession"
+                          value={customRegistrationData.profession || ''}
+                          onChange={(e) => setCustomRegistrationData({ ...customRegistrationData, profession: e.target.value })}
+                          required
+                        />
+                      </div>
+                      <div className="form-group">
+                        <label htmlFor="whatsapp">Whatsapp number*</label>
+                        <input
+                          type="tel"
+                          id="whatsapp"
+                          name="whatsapp"
+                          placeholder="Enter your Whatsapp number"
+                          value={customRegistrationData.whatsapp || ''}
+                          onChange={(e) => setCustomRegistrationData({ ...customRegistrationData, whatsapp: e.target.value })}
+                          required
+                        />
+                      </div>
+                      <div className="form-group">
+                        <label htmlFor="sangh">Sangh name*</label>
+                        <input
+                          type="text"
+                          id="sangh"
+                          name="sangh"
+                          placeholder="Enter your Sangh name"
+                          value={customRegistrationData.sangh || ''}
+                          onChange={(e) => setCustomRegistrationData({ ...customRegistrationData, sangh: e.target.value })}
+                          required
+                        />
+                      </div>
+                      <div className="form-group">
+                        <label htmlFor="category">Category*</label>
+                        <select
+                          id="category"
+                          name="category"
+                          value={customRegistrationData.category || ''}
+                          onChange={(e) => setCustomRegistrationData({ ...customRegistrationData, category: e.target.value })}
+                          required
+                        >
+                          <option value="">Select Category</option>
+                          <option value="6-12 yrs">Category 1: 6-12 yrs</option>
+                          <option value="12-18 yrs">Category 2: 12-18 yrs</option>
+                          <option value="18-30 yrs">Category 3: 18-30 yrs</option>
+                          <option value="30-45 yrs">Category 4: 30-45 yrs</option>
+                          <option value="45+ yrs">Category 5: 45+ yrs</option>
+                        </select>
+                      </div>
+                      <button
+                        type="submit"
+                        className="submit-btn"
+                        disabled={isSubmittingRegistration}
+                      >
+                        {isSubmittingRegistration ? 'Submitting...' : 'Register Now'}
+                      </button>
+                    </form>
+                  ) : (
+                    <form onSubmit={handleDefaultRegistrationSubmit}>
+                      <div className="form-group">
+                        <label htmlFor="fullName">Full Name*</label>
+                        <input
+                          type="text"
+                          id="fullName"
+                          name="fullName"
+                          placeholder="Enter your full name"
+                          value={defaultRegistrationData.fullName}
+                          onChange={(e) => setDefaultRegistrationData({ ...defaultRegistrationData, fullName: e.target.value })}
+                          required
+                        />
+                      </div>
+                      <div className="form-group">
+                        <label htmlFor="email">Email Address*</label>
+                        <input
+                          type="email"
+                          id="email"
+                          name="email"
+                          placeholder="Enter your email address"
+                          value={defaultRegistrationData.email}
+                          onChange={(e) => setDefaultRegistrationData({ ...defaultRegistrationData, email: e.target.value })}
+                          required
+                        />
+                      </div>
+                      <div className="form-group">
+                        <label htmlFor="phone">Phone Number*</label>
+                        <input
+                          type="tel"
+                          id="phone"
+                          name="phone"
+                          placeholder="Enter your phone number"
+                          value={defaultRegistrationData.phone}
+                          onChange={(e) => setDefaultRegistrationData({ ...defaultRegistrationData, phone: e.target.value })}
+                          required
+                        />
+                      </div>
+                      <div className="form-group">
+                        <label htmlFor="message">Additional Message</label>
+                        <textarea
+                          id="message"
+                          name="message"
+                          placeholder="Any specific requirements or questions..."
+                          rows="4"
+                          style={{ maxWidth: "316px" }}
+                          value={defaultRegistrationData.message}
+                          onChange={(e) => setDefaultRegistrationData({ ...defaultRegistrationData, message: e.target.value })}
+                        ></textarea>
+                      </div>
+                      <button
+                        type="submit"
+                        className="submit-btn"
+                        disabled={isSubmittingRegistration}
+                      >
+                        {isSubmittingRegistration ? 'Submitting...' : 'Register Now'}
+                      </button>
+                    </form>
+                  )}
+                </>
+              )}
+
+              <div className="contact-info">
+                <p>For inquiries, please contact us:</p>
+                <a href="tel:9426364451">+91 9426364451</a>
+                <a href="mailto:namonamahshaswatparivar9@gmail.com">namonamahshaswatparivar9@gmail.com</a>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div className="related-events">
-        {events.filter(e => e.id !== event.id && e.type === event.type).length > 0 && (
-          <>
-            <h2>Similar Events</h2>
-            <div className="related-events-grid">
-              {events
-                .filter(e => e.id !== event.id && e.type === event.type)
-                .slice(0, 3)
-                .map(relatedEvent => (
-                  <div key={relatedEvent.id} className="related-event-card">
-                    <Link to={`/events/${relatedEvent.id}`}>
-                      <img src={relatedEvent.image} alt={relatedEvent.title} className="fit-image" />
-                      <div className="related-event-info">
-                        <h4>{relatedEvent.title}</h4>
-                        <p>{relatedEvent.date}</p>
-                      </div>
-                    </Link>
-                  </div>
-                ))}
-            </div>
-          </>
-        )}
+        <div className="related-events">
+          {events.filter(e => e.id !== event.id && e.type === event.type).length > 0 && (
+            <>
+              <h2>Similar Events</h2>
+              <div className="related-events-grid">
+                {events
+                  .filter(e => e.id !== event.id && e.type === event.type)
+                  .slice(0, 3)
+                  .map(relatedEvent => (
+                    <div key={relatedEvent.id} className="related-event-card">
+                      <Link to={`/events/${relatedEvent.id}`}>
+                        <img src={relatedEvent.image} alt={relatedEvent.title} className="fit-image" />
+                        <div className="related-event-info">
+                          <h4>{relatedEvent.title}</h4>
+                          <p>{relatedEvent.date}</p>
+                        </div>
+                      </Link>
+                    </div>
+                  ))}
+              </div>
+            </>
+          )}
+        </div>
       </div>
-    </div>
-    <Footer/>
+      <Footer />
     </>
   );
 };

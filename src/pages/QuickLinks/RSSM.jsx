@@ -3,6 +3,10 @@ import events from '../../data/rssmEvents.json'; // Import your events data
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import Events from '../Events';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import YouTubeIcon from '@mui/icons-material/YouTube';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 
 const RSSM = () => {
     const [activeType, setActiveType] = useState('upcoming'); // State to manage event type
@@ -38,6 +42,18 @@ const RSSM = () => {
                     </button>
                 </Link> */}
                 <Events flag="1"/>
+            </div>
+            {/* Social Media Links Section */}
+            <div className="rssm-social-links">
+                    
+                <div className="rssm-social-icons">
+                    <a href="http://instagram.com/rushabh_samrajya_2087/?igsh=MTg1M2R6Y25iM3czNA%3D%3D#" target="_blank" rel="noopener noreferrer">
+                        <InstagramIcon />
+                    </a>
+                    <a href="https://www.facebook.com/share/1CYf4DHHTU/" target="_blank" rel="noopener noreferrer">
+                        <FacebookIcon />
+                    </a>
+                </div>
             </div>
         </div>
     );

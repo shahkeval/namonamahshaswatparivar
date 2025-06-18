@@ -142,3 +142,110 @@
 .view-events-button:hover {
     background-color: #45a049; /* Darker green */
 }
+
+.rssm-social-links {
+    position: fixed; /* Keep it fixed on the right side */
+    right: 0px; /* Adjust as needed for spacing from the right */
+    top: 300px; /* Adjust as needed for vertical positioning */
+    background-color: white; /* Background color for visibility */
+    padding: 10px; /* Padding around the links */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    z-index: 1000; /* Ensure it appears above other content */
+}
+
+.rssm-social-links h3 {
+    margin: 0 0 10px; /* Margin for the heading */
+    text-align: center; /* Center the heading */
+}
+
+.rssm-social-icons {
+    display: flex; /* Use flexbox for alignment */
+    flex-direction: column; /* Arrange items vertically */
+    align-items: center; /* Center the icons horizontally */
+    gap: 10px; /* Space between icons */
+}
+
+.rssm-social-icons a {
+    color: var(--accent-color); /* Use accent color for icons */
+    font-size: 24px; /* Adjust icon size */
+    transition: color 0.3s; /* Smooth color transition */
+}
+
+.rssm-social-icons a:hover {
+    color: #700b0b; /* Change color on hover */
+}
+
+.footer {
+    position: relative; /* Ensure it has a positioning context */
+    z-index: 1; /* Lower z-index than social links */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .rssm-social-links {
+        right: 10px; /* Adjust for smaller screens */
+        top: 80px; /* Adjust for smaller screens */
+        padding: 5px; /* Less padding for smaller screens */
+    }
+
+    .rssm-container {
+        padding: 10px; /* Add padding for mobile */
+    }
+
+    .video-container iframe {
+        height: 300px; /* Reduce height for mobile */
+    }
+
+    h1 {
+        font-size: 1.5em; /* Adjust heading size for mobile */
+    }
+
+    .event-message {
+        margin: 10px 0; /* Adjust margin for mobile */
+    }
+
+    .rssm-social-icons {
+        gap: 5px; /* Reduce gap between icons */
+    }
+
+    .rssm-social-icons a {
+        font-size: 20px; /* Adjust icon size for mobile */
+    }
+    .rssm-social-links {
+        position: fixed; /* Keep it fixed on the right side */
+        right: 0px; /* Adjust as needed for spacing from the right */
+        top: 300px; /* Adjust as needed for vertical positioning */
+        background-color: white; /* Background color for visibility */
+        padding: 10px; /* Padding around the links */
+        border-radius: 8px; /* Rounded corners */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        z-index: 1000; /* Ensure it appears above other content */
+    }
+}
+
+/* Additional styles for very small screens */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.2em; /* Further reduce heading size */
+    }
+
+    .video-container iframe {
+        height: 200px; /* Further reduce height for very small screens */
+    }
+
+    .rssm-social-links {
+        right: 5px; /* Adjust for very small screens */
+        top: 60px; /* Adjust for very small screens */
+    }
+    .rssm-social-links {
+        position: fixed; /* Keep it fixed on the right side */
+        right: 0px; /* Adjust as needed for spacing from the right */
+        top: 300px; /* Adjust as needed for vertical positioning */
+        background-color: white; /* Background color for visibility */
+        padding: 10px; /* Padding around the links */
+        border-radius: 8px; /* Rounded corners */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        z-index: 1000; /* Ensure it appears above other content */
+    }
+}
