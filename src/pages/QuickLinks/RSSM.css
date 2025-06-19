@@ -189,9 +189,7 @@
         padding: 5px; /* Less padding for smaller screens */
     }
 
-    .rssm-container {
-        padding: 10px; /* Add padding for mobile */
-    }
+
 
     .video-container iframe {
         height: 300px; /* Reduce height for mobile */

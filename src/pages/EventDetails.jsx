@@ -360,7 +360,12 @@ const EventDetails = () => {
               ) : (
                 <>
                   {event.id === 'RSSM-સુલેખન કળા' ? (
+                    <>
+                      <div className="rules-note">
+                        <p>For rules and regulations:- <br></br><button className="rules-button" onClick={() => window.open('https://docs.google.com/document/d/1-XkmbqGijcaajrGBQVT-NH8UigUnG1Z89T_2Wp1HxkQ/edit?usp=sharing', '_blank')}>click here</button></p>
+                      </div>
                     <form onSubmit={handleCustomRegistrationSubmit}>
+                    
                       <div className="form-group">
                         <label htmlFor="fullName">Full Name*</label>
                         <input
@@ -373,6 +378,7 @@ const EventDetails = () => {
                           required
                         />
                       </div>
+                      <br></br>
                       <div className="form-group">
                         <label htmlFor="city">City*</label>
                         <input
@@ -385,6 +391,7 @@ const EventDetails = () => {
                           required
                         />
                       </div>
+                      <br></br>
                       <div className="form-group">
                         <label htmlFor="area">Area*</label>
                         <input
@@ -397,6 +404,7 @@ const EventDetails = () => {
                           required
                         />
                       </div>
+                      <br></br>
                       <div className="form-group">
                         <label htmlFor="birthdate">Birth date*</label>
                         <input
@@ -408,6 +416,7 @@ const EventDetails = () => {
                           required
                         />
                       </div>
+                      <br></br>
                       <div className="form-group">
                         <label htmlFor="gender">Gender*</label>
                         <div>
@@ -435,6 +444,7 @@ const EventDetails = () => {
                           </label>
                         </div>
                       </div>
+                      <br></br>
                       <div className="form-group">
                         <label htmlFor="profession">Profession*</label>
                         <input
@@ -447,6 +457,7 @@ const EventDetails = () => {
                           required
                         />
                       </div>
+                      <br></br>
                       <div className="form-group">
                         <label htmlFor="whatsapp">Whatsapp number*</label>
                         <input
@@ -459,6 +470,7 @@ const EventDetails = () => {
                           required
                         />
                       </div>
+                      <br></br>
                       <div className="form-group">
                         <label htmlFor="sangh">Sangh name*</label>
                         <input
@@ -471,6 +483,7 @@ const EventDetails = () => {
                           required
                         />
                       </div>
+                      <br></br>
                       <div className="form-group">
                         <label htmlFor="category">Category*</label>
                         <select
@@ -496,6 +509,7 @@ const EventDetails = () => {
                         {isSubmittingRegistration ? 'Submitting...' : 'Register Now'}
                       </button>
                     </form>
+                    </>
                   ) : (
                     <form onSubmit={handleDefaultRegistrationSubmit}>
                       <div className="form-group">

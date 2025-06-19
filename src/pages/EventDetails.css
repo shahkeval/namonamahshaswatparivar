@@ -498,3 +498,28 @@ select:focus {
 .submit-another-form-btn:hover {
     background-color: #5a0909; /* Darken on hover */
 }
+
+.rules-note {
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  color: black;
+  font-weight: bold;
+text-align: center;
+}
+
+.rules-button {
+  background-color: var(--accent-color); /* Use the same accent color */
+  color: white; /* White text color */
+  border: none;
+  padding: 0.8rem 1.2rem; /* Match the padding of the submit button */
+  border-radius: 25px; /* Match the border radius */
+  font-weight: 600; /* Bold text */
+  font-size: 1rem; /* Match the font size */
+  cursor: pointer;
+  transition: background-color 0.3s; /* Smooth transition */
+  margin-left: 5px; /* Space between text and button */
+}
+
+.rules-button:hover {
+  background-color: #5a0909; /* Darken on hover, same as submit button */
+}
