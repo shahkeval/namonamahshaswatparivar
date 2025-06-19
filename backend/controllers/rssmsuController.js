@@ -34,6 +34,7 @@ exports.getAllRegistrations = async (req, res) => {
     // Global search
     if (search) {
       filter.$or = [
+        {registrationId: { $regex: search, $options: 'i' } },
         { fullName: { $regex: search, $options: 'i' } },
         { city: { $regex: search, $options: 'i' } },
         { area: { $regex: search, $options: 'i' } },

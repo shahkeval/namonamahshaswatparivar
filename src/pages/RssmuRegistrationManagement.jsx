@@ -140,6 +140,7 @@ const RssmuRegistrationManagement = () => {
 
   const columns = useMemo(
     () => [
+      { accessorKey: 'registrationId', header: 'Registration ID', enableColumnFilter: true }, // Add this line
       { accessorKey: 'fullName', header: 'Full Name', enableColumnFilter: true },
       { accessorKey: 'category', header: 'Category', enableColumnFilter: true },
       { accessorKey: 'whatsapp', header: 'WhatsApp', enableColumnFilter: true },
