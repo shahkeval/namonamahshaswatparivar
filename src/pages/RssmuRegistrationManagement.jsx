@@ -24,6 +24,7 @@ import axios from 'axios';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import './RssmuRegistrationManagement.css';
+import * as XLSX from 'xlsx';
 
 const RssmuRegistrationManagement = () => {
   const [registrations, setRegistrations] = useState([]);
@@ -138,6 +139,32 @@ const RssmuRegistrationManagement = () => {
     }
   };
 
+  const handleExcelDownload = async () => {
+    try {
+      const response = await axios.get('http://localhost:5000/api/rssmsu/allregistartions');
+      const data = response.data;
+
+      // Reorder the data to place registrationId first and exclude _id and __v
+      const modifiedData = data.map(item => {
+        const { _id, __v, registrationId, ...rest } = item;
+        return { registrationId, ...rest };
+      });
+
+      // Create a new workbook and a new worksheet
+      const workbook = XLSX.utils.book_new();
+      const worksheet = XLSX.utils.json_to_sheet(modifiedData);
+
+      // Append the worksheet to the workbook
+      XLSX.utils.book_append_sheet(workbook, worksheet, 'Registrations');
+
+      // Export the workbook to an Excel file
+      XLSX.writeFile(workbook, 'registrations.xlsx');
+    } catch (error) {
+      console.error('Error downloading Excel file:', error);
+      setSnackbar({ open: true, message: 'Failed to download Excel file', severity: 'error' });
+    }
+  };
+
   const columns = useMemo(
     () => [
       { accessorKey: 'registrationId', header: 'Registration ID', enableColumnFilter: true }, // Add this line
@@ -185,9 +212,14 @@ const RssmuRegistrationManagement = () => {
     onGlobalFilterChange: setGlobalFilter,
     onColumnFiltersChange: setColumnFilters,
     renderTopToolbarCustomActions: () => (
-      <Button variant="contained" startIcon={<AddIcon />} onClick={() => handleOpenDialog()} style={{ background: '#b8860b', color: '#fff' }}>
-        Add Registration
-      </Button>
+      <Box sx={{ display: 'flex', gap: 1 }}>
+        <Button variant="contained" startIcon={<AddIcon />} onClick={() => handleOpenDialog()} style={{ background: '#b8860b', color: '#fff' }}>
+          Add Registration
+        </Button>
+        <Button variant="contained" onClick={handleExcelDownload} style={{ margin: '0', background: '#964b00', color: '#fff' }}>
+          Download Excel
+        </Button>
+      </Box>
     ),
     muiTablePaperProps: {
       sx: { background: '#fffbe6' },

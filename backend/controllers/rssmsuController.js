@@ -109,4 +109,14 @@ exports.getregsummary = async (req, res) => {
     console.error(error);
     res.status(500).json({ message: 'Server error.' });
   }
-}; 
+};
+
+// Get all registrations without pagination and filters
+exports.getAllRegistrationsNoPagination = async (req, res) => {
+  try {
+    const registrations = await RSSMsu.find();
+    res.json(registrations);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+} 

@@ -11,6 +11,8 @@ router.post('/', controller.createRegistration);
 // Get all registrations
 router.get('/allrssmreg', controller.getAllRegistrations);
 router.get('/rsummary', controller.getregsummary);
+// Get registrarions without pagination and filters
+router.get('/allregistartions',controller.getAllRegistrationsNoPagination);
 // Update a registration by ID
 router.put('/:id', controller.updateRegistration);
 
@@ -20,7 +22,7 @@ router.delete('/:id', controller.deleteRegistration);
 // Get registration by ID
 router.get('/:id', controller.getRegistrationById);
 
-// Get registration summary
+
 
 
 module.exports = router; 
