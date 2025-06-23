@@ -141,7 +141,7 @@ const RssmuRegistrationManagement = () => {
 
   const handleExcelDownload = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/rssmsu/allregistartions');
+      const response = await axios.get('https://namonamahshaswatparivar-dt17.vercel.app/api/rssmsu/allregistartions');
       const data = response.data;
 
       // Reorder the data to place registrationId first and exclude _id and __v
