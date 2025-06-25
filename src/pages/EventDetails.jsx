@@ -248,6 +248,7 @@ const EventDetails = () => {
   };
 
   // Deadline for RSSM-સુલેખન કળા registration
+  const sulekhDeadline = new Date('2025-06-26T12:00:00+05:30');
   const isSulekhDeadlinePassed = new Date() > sulekhDeadline;
 
   return (
