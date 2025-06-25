@@ -2,6 +2,7 @@ const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
 const connectDB = require('./config/db');
+
 // const rssmsuRoutes = require('./routes/rssmsu');
 
 // Load env vars
@@ -22,6 +23,7 @@ app.use(cors());
 app.use('/api/donations', require('./routes/donationRoutes'));
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/rssmsu', require('./routes/rssmsu'));
+app.use('/api/yatriks', require('./routes/yatrikRoutes'));
 
 const PORT = process.env.PORT || 5000;
 
