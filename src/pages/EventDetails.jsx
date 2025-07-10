@@ -430,6 +430,7 @@ const EventDetails = () => {
           );
 
           await axios.post(
+            "https://namonamahshaswatparivar-dt17.vercel.app/api/yatriks/createyatrik",
             formData,
             {
               headers: { "Content-Type": "multipart/form-data" },
