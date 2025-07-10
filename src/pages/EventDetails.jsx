@@ -172,7 +172,7 @@ const EventDetails = () => {
     if (!paymentLinkId) return;
     const interval = setInterval(async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/yatriks/payment-status/${paymentLinkId}`);
+        const res = await axios.get(`https://namonamahshaswatparivar-dt17.vercel.app/api/yatriks/payment-status/${paymentLinkId}`);
         if (res.data.paymentStatus === 'paid') {
           setPaymentStatus('paid');
           clearInterval(interval);
@@ -430,7 +430,6 @@ const EventDetails = () => {
           );
 
           await axios.post(
-            "http://localhost:5000/api/yatriks/createyatrik",
             formData,
             {
               headers: { "Content-Type": "multipart/form-data" },
@@ -572,7 +571,7 @@ const EventDetails = () => {
       formData.append("familyConfirmation", vaiyavachForm.familyConfirmation);
       formData.append("transactionNumber", vaiyavachTransactionNumber);
       await axios.post(
-        "http://localhost:5000/api/vaiyavach/createvaiyavachi",
+        "https://namonamahshaswatparivar-dt17.vercel.app/api/vaiyavach/createvaiyavachi",
         formData,
         {
           headers: { "Content-Type": "multipart/form-data" },
@@ -606,7 +605,7 @@ const EventDetails = () => {
     setIsSubmittingRegistration(true);
     try {
       // Create Razorpay order
-      const orderRes = await axios.post('http://localhost:5000/api/yatriks/create-order', { amount: 500 });
+      const orderRes = await axios.post('https://namonamahshaswatparivar-dt17.vercel.app/api/yatriks/create-order', { amount: 500 });
       const { id: order_id, amount, currency } = orderRes.data.order;
       // Open Razorpay Checkout
       const options = {
@@ -649,14 +648,14 @@ const EventDetails = () => {
           formData.append('familyConfirmation', regData.familyConfirmation);
           if (photoFile) formData.append('yatrikPhoto', photoFile);
           // Submit registration + payment details
-          await axios.post('http://localhost:5000/api/yatriks/submit-registration', formData, { headers: { 'Content-Type': 'multipart/form-data' } });
+          await axios.post('https://namonamahshaswatparivar-dt17.vercel.app/api/yatriks/submit-registration', formData, { headers: { 'Content-Type': 'multipart/form-data' } });
           setPaymentThankYou(true);
           setIsSubmittingRegistration(false);
         },
         modal: {
           ondismiss: async function () {
             // User closed/cancelled payment
-            await axios.post('http://localhost:5000/api/yatriks/payment-cancelled', { orderId: order_id, reason: 'User cancelled payment' });
+            await axios.post('https://namonamahshaswatparivar-dt17.vercel.app/api/yatriks/payment-cancelled', { orderId: order_id, reason: 'User cancelled payment' });
             setIsSubmittingRegistration(false);
           }
         },
@@ -669,10 +668,10 @@ const EventDetails = () => {
       };
       const rzp = new window.Razorpay(options);
       // Mark payment as started
-      await axios.post('http://localhost:5000/api/yatriks/payment-started', { orderId: order_id });
+      await axios.post('https://namonamahshaswatparivar-dt17.vercel.app/api/yatriks/payment-started', { orderId: order_id });
       rzp.open();
     } catch (err) {
-      await axios.post('http://localhost:5000/api/yatriks/payment-error', { orderId: err?.response?.data?.order_id || '', reason: err.message });
+      await axios.post('https://namonamahshaswatparivar-dt17.vercel.app/api/yatriks/payment-error', { orderId: err?.response?.data?.order_id || '', reason: err.message });
       alert('Failed to initiate payment. Please try again.');
       setIsSubmittingRegistration(false);
     }

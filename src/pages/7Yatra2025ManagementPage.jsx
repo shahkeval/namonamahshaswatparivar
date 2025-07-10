@@ -34,7 +34,7 @@ const Yatra2025ManagementPage = () => {
         order: sorting[0]?.desc ? 'desc' : 'asc',
         ...Object.fromEntries(columnFilters.map(filter => [filter.id, filter.value])),
       };
-      const res = await axios.get('http://localhost:5000/api/yatriks/getallyatrik', { params });
+      const res = await axios.get('https://namonamahshaswatparivar-dt17.vercel.app/api/yatriks/getallyatrik', { params });
       setYatriks(res.data.yatriks || []);
       setRowCount(res.data.total || 0);
     } catch (error) {

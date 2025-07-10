@@ -63,7 +63,7 @@ const AdminDashboard = () => {
     const fetchYatraSummary = async () => {
       setLoadingYatra(true);
       try {
-        const res = await axios.get('http://localhost:5000/api/yatriks/summary');
+        const res = await axios.get('https://namonamahshaswatparivar-dt17.vercel.app/api/yatriks/summary');
         setYatraSummary(res.data);
       } catch (error) {
         setYatraSummary({ totalRecords: 0, oldCategoryCount: 0, newCategoryCount: 0 });
