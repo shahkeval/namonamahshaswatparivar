@@ -51,6 +51,16 @@
   text-align: center;
 }
 
+.donut-bottom-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 8px;
+  width: 100%;
+}
+
 .know-more-btn {
   background: none !important;
   color: #1e9ecb !important;
@@ -65,9 +75,9 @@
 .donut-label {
   color: #222;
   font-weight: bold;
-  margin-top: 8px;
   font-size: 1.1rem;
   text-align: center;
+  margin: 0;
 }
 
 @media (max-width: 1024px) {
@@ -110,7 +120,7 @@
   }
   .donut-chart-box {
     width: 98vw;
-    max-width: 98vw;
+    max-width: 92vw;
     padding: 10px 2px;
   }
   .welcome-title {

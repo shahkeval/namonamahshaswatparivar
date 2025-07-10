@@ -24,6 +24,7 @@ app.use('/api/donations', require('./routes/donationRoutes'));
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/rssmsu', require('./routes/rssmsu'));
 app.use('/api/yatriks', require('./routes/yatrikRoutes'));
+app.use('/api/vaiyavach', require('./routes/vaiyavchRoutes'));
 
 const PORT = process.env.PORT || 5000;
 

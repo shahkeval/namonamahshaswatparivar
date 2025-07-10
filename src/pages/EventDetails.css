@@ -383,7 +383,7 @@ form {
   
 }
  
-@media (min-width: 576px) and (max-width: 767.98px) {
+@media (min-width: 264px) and (max-width: 767.98px) {
     .registration-container{
         width: 100%;
         height: auto;
@@ -546,7 +546,7 @@ text-align: center;
     transition: width 0.3s;
 }
 
-.back-button {
+.back-button-yatra {
   background-color: var(--accent-color);
   color: white;
   border: none;
@@ -557,6 +557,7 @@ text-align: center;
   cursor: pointer;
   transition: var(--transition);
   margin-top: 10px;
+  margin-right: 10px; /* Add space between back and next buttons */
 } 
 
 .next-button {
@@ -572,30 +573,13 @@ text-align: center;
     margin-top: 10px;
 }
 
-.back-button:hover, .next-button:hover {
+.back-button-yatra:hover, .next-button:hover {
     background-color: #5a0909;
 }
 
-.back-button {
-    background-color: var(--accent-color);
-    color: white;
-    border: none;
-    padding: 0.8rem 1.2rem;
-    border-radius: 25px; /* Ensure the same border radius as Next button */
-    font-weight: 600;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: var(--transition);
-    margin-top: 10px;
-}
-
-.back-button:hover {
-    background-color: #5a0909;
-}
 
 img {
     max-width: 100%;
     height: auto;
-    border-radius: 8px;
-    margin-top: 10px;
+    border-radius: 8px; 
 }

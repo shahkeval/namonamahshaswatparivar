@@ -25,6 +25,7 @@ import AdminDashboard from './pages/AdminDashboard';
 import DonationManagement from './pages/DonationManagement';
 import RSSM from './pages/QuickLinks/RSSM';
 import Rssmregistration from './pages/RssmuRegistrationManagement';
+import Yatra2025ManagementPage from './pages/7Yatra2025ManagementPage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -39,7 +40,7 @@ root.render(
           <Route path="events/:id" element={<EventDetails />} />
           <Route path="donation" element={<Donation />} />
           <Route path="gallery" element={<Gallery />} />
-          <Route path="contact" element={<Contact />} />
+          <Route path="contactus" element={<Contact />} />
           <Route path="voting" element={<VoteComponent />} />
           <Route path="quicklinks/chauvihar" element={<Chauvihar />} />
           <Route path="quicklinks/shetrunjay" element={<Shetrunjay />} />
@@ -55,6 +56,7 @@ root.render(
           <Route path="/admin/donations" element={<DonationManagement />} />
           <Route path="/admin/rssmregistrations" element={<Rssmregistration/>} />
           <Route path="/RSSM" element={<RSSM/>} />
+          <Route path="/admin/7yatra2025management" element={<Yatra2025ManagementPage />} />
         </Route>
       </Routes>
     </Router>
